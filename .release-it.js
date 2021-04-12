@@ -1,0 +1,14 @@
+module.exports = {
+  github: {
+    release: true
+  },
+  npm: {
+    publish: false
+  },
+  plugins: {
+    '@release-it/conventional-changelog': {
+      preset: 'angular',
+      infile: 'CHANGELOG.md'
+    }
+  }
+};

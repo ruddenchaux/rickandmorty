@@ -1,0 +1,76 @@
+{
+  "name": "rickandmorty",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@material-ui/core": "^4.11.3",
+    "@material-ui/icons": "^4.11.2",
+    "@material-ui/styles": "^4.11.3",
+    "@types/node": "^12.0.0",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "4.0.3",
+    "typescript": "^4.1.2",
+    "web-vitals": "^1.0.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "serve": "serve -s build -l 3000",
+    "eject": "react-scripts eject",
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "test": "npm run build && start-server-and-test serve :3000 cy:run",
+    "lint": "eslint '*/**/*.{js,ts,tsx}' --max-warnings 0",
+    "lint:fix": "npm run lint -- --fix",
+    "lint:ci": "npm run lint -- --quiet",
+    "format": "prettier --write src/**/*.ts{,x}",
+    "prepare-commit-msg-unix": "exec < /dev/tty && git cz --hook || true",
+    "prepare-commit-msg-win": "prepare-commit-msg",
+    "release": "HUSKY=0 release-it --disable-metrics --ci",
+    "postinstall": "husky install"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@release-it/conventional-changelog": "^2.0.1",
+    "@types/react-router-dom": "^5.1.7",
+    "@typescript-eslint/eslint-plugin": "^4.21.0",
+    "@typescript-eslint/parser": "^4.21.0",
+    "commitizen": "^4.2.3",
+    "cypress": "^7.0.1",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^7.2.0",
+    "eslint-config-airbnb": "18.2.1",
+    "eslint-config-airbnb-typescript": "^12.3.1",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-react": "^7.21.5",
+    "eslint-plugin-react-hooks": "^1.7.0",
+    "husky": "^6.0.0",
+    "prettier": "^2.2.1",
+    "release-it": "^14.6.1",
+    "serve": "^11.3.2",
+    "start-server-and-test": "^1.12.1"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}

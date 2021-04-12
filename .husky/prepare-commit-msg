@@ -1,0 +1,9 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+if [ "$OSTYPE" = "win32" ] || [ "$OSTYPE" = "msys" ];
+then
+  yarn prepare-commit-msg-win
+else
+  yarn prepare-commit-msg-unix
+fi

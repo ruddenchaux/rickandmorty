@@ -1,0 +1,104 @@
+# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: Node.js CI
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - uses: c-hive/gha-yarn-cache@v1
+
+      - name: Install dependencies
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
+        run: yarn --prefer-offline --frozen-lockfile --silent
+
+      - name: Lint
+        run: yarn lint
+
+  cypress:
+    runs-on: ubuntu-latest
+    needs: [lint]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - uses: c-hive/gha-yarn-cache@v1
+
+      - name: Cypress run
+        uses: cypress-io/github-action@v2
+        with:
+          install-command: yarn --prefer-offline --frozen-lockfile --silent
+          build: yarn build
+          start: yarn serve
+          wait-on: http://localhost:3000
+          record: true
+        env:
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          COMMIT_INFO_MESSAGE: ${{ github.event.pull_request.title }}
+
+  deploy:
+    needs: [cypress]
+    name: 'Deploy on Netlify'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: c-hive/gha-yarn-cache@v1
+
+      - name: Install dependencies
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
+        run: yarn --prefer-offline --frozen-lockfile --silent
+
+      - name: Build
+        run: yarn build
+
+      - name: Deploy to Netlify
+        uses: nwtgck/actions-netlify@v1.1
+        with:
+          publish-dir: './build'
+          production-branch: master
+          deploy-message: 'Deploy from GitHub Actions'
+          enable-pull-request-comment: false
+          enable-commit-comment: true
+          overwrites-pull-request-comment: true
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        timeout-minutes: 1
+
+  release:
+    needs: [deploy]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - uses: c-hive/gha-yarn-cache@v1
+
+      - name: git config
+        run: |
+          git config user.name "${GITHUB_ACTOR}"
+          git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+
+      - name: Install dependencies
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
+        run: yarn --prefer-offline --frozen-lockfile --silent
+
+      - name: Release
+        run: yarn release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
