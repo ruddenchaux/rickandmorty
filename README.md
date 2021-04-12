@@ -9,6 +9,6 @@ Discover the Rick and Morty world
 - [ ] Locations
 - [ ] Episodes
 - [ ] Favorites
-- [ ] Responsive template
+- [x] Responsive template
 - [ ] PWA
 - [ ] Internationalizzations
