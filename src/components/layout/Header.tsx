@@ -3,7 +3,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import React from 'react';
 import Logo from '../Logo';
 
-// style of component
+// component style
 const useStyles = makeStyles((theme) => ({
   appBar: {
     backgroundColor: theme.palette.background.paper
@@ -22,7 +22,7 @@ export default function Header({ openMenu }: { openMenu: React.Dispatch<React.Se
       <Toolbar>
         <Logo />
 
-        <Typography variant="h6" color="textPrimary" component="h1" className={classes.title}>
+        <Typography variant="h4" color="textPrimary" component="h1" className={classes.title}>
           Rick and Morty
         </Typography>
 

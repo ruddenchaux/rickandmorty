@@ -30,7 +30,7 @@ const routes = [
   }
 ];
 
-// style of component
+// component style
 const useStyles = makeStyles((theme) => ({
   main: {
     backgroundColor: theme.palette.background.default,
@@ -41,7 +41,8 @@ const useStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.down('sm')]: {
       height: 'calc(100vh - 56px - 160px)'
-    }
+    },
+    overflow: 'auto'
   }
 }));
 

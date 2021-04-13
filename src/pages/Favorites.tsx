@@ -1,7 +1,7 @@
 import { makeStyles, Typography } from '@material-ui/core';
 import React from 'react';
 
-// style of component
+// component style
 const useStyles = makeStyles((theme) => ({
   title: {
     marginLeft: theme.spacing(3)
