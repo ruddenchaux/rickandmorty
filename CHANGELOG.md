@@ -1,3 +1,5 @@
+## [0.3.1](https://github.com/ruddenchaux/rickandmorty/compare/0.3.0...0.3.1) (2021-04-13)
+
 # 0.3.0 (2021-04-13)
 
 
