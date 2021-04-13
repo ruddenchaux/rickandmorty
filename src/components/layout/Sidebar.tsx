@@ -69,9 +69,17 @@ export default function Sidebar({
     <div className={classes.list} role="presentation" onClick={closeDrawer()} onKeyDown={closeDrawer()}>
       <List>
         {itemsMenu.map((item) => (
-          <ListItem button key={item.label} className={classes.listItem} component={NavLink} to={item.to} exact>
+          <ListItem
+            button
+            key={item.label}
+            className={classes.listItem}
+            component={NavLink}
+            to={item.to}
+            exact
+            data-cy="item-menu"
+          >
             <ListItemIcon>
-              <item.icon />
+              <item.icon data-cy="item-menu-icon" />
             </ListItemIcon>
             <ListItemText primary={item.label} />
           </ListItem>
@@ -81,7 +89,7 @@ export default function Sidebar({
   );
 
   return (
-    <Drawer anchor="right" open={openMenu} onClose={closeDrawer()}>
+    <Drawer anchor="right" data-cy="sidebar" open={openMenu} onClose={closeDrawer()}>
       {header}
       <Divider />
       {list}

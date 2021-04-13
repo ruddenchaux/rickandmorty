@@ -27,7 +27,7 @@ export default function Header({ openMenu }: { openMenu: React.Dispatch<React.Se
         </Typography>
 
         <Hidden smDown>
-          <IconButton color="default" aria-label="open menu" onClick={() => openMenu(true)}>
+          <IconButton color="default" data-cy="button-menu" aria-label="open menu" onClick={() => openMenu(true)}>
             <MenuIcon />
           </IconButton>
         </Hidden>

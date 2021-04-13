@@ -28,9 +28,16 @@ export default function BottomNavigation() {
         setValue(to);
       }}
       showLabels
+      data-cy="bottom-navigation"
     >
       {itemsMenu.map((item) => (
-        <BottomNavigationAction key={item.label} label={item.label} value={item.to} icon={<item.icon />} />
+        <BottomNavigationAction
+          key={item.label}
+          label={item.label}
+          value={item.to}
+          icon={<item.icon data-cy="bottom-navigation-action-icon" />}
+          data-cy="bottom-navigation-action"
+        />
       ))}
     </MuiBottomNavigation>
   );
