@@ -3,7 +3,7 @@ import React from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import itemsMenu from '../../utils/itemsMenu';
 
-// style of component
+// component style
 const useStyles = makeStyles(() => ({
   bottomNavigation: {
     position: 'fixed',
