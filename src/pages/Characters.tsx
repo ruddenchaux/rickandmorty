@@ -1,6 +1,8 @@
-import { Container, makeStyles, Grid } from '@material-ui/core';
+import { Container, Grid, makeStyles } from '@material-ui/core';
 import React from 'react';
 import CharacterCard from '../components/characters/CharacterCard';
+import { Character } from '../models/Character';
+import { useGetAllQuery } from '../services/characters';
 
 // component style
 const useStyles = makeStyles((theme) => ({
@@ -30,50 +32,25 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Characters() {
   const classes = useStyles();
+  const { data, error, isLoading } = useGetAllQuery({});
 
-  const cardData = {
-    id: 1,
-    name: 'Rick Sanchez',
-    status: 'Alive',
-    species: 'Human',
-    type: '',
-    gender: 'Male',
-    origin: {
-      name: 'Earth (C-137)',
-      url: 'https://rickandmortyapi.com/api/location/1'
-    },
-    location: {
-      name: 'Earth (Replacement Dimension)',
-      url: 'https://rickandmortyapi.com/api/location/20'
-    },
-    image: 'https://rickandmortyapi.com/api/character/avatar/1.jpeg',
-    episode: [
-      {
-        name: 'Close Rick-counters of the Rick Kind'
-      },
-      {
-        name: 'The Rickshank Rickdemption'
-      }
-    ],
-    url: 'https://rickandmortyapi.com/api/character/1',
-    created: '2017-11-04T18:48:46.250Z'
-  };
+  if (error) {
+    return <>Oh no, there was an error</>;
+  }
+
+  if (isLoading || !data) {
+    return <>Loading...</>;
+  }
 
   return (
     <>
-      {/* <Typography data-cy="characters-title" className={classes.title} color="textPrimary" variant="h3" component="h2">
-        Characters
-      </Typography> */}
-
       <Container className={classes.cardGrid} maxWidth="xl">
         <Grid container spacing={4}>
-          {Array(20)
-            .fill(0)
-            .map((i) => (
-              <Grid item key={i} xs={12} lg={6} xl={4}>
-                <CharacterCard character={cardData} key={i} />
-              </Grid>
-            ))}
+          {data.map((character: Character) => (
+            <Grid item key={character.id} xs={12} lg={6} xl={4}>
+              <CharacterCard character={character} />
+            </Grid>
+          ))}
         </Grid>
       </Container>
     </>
