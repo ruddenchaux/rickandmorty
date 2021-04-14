@@ -1,6 +1,7 @@
 import { AppBar, Hidden, IconButton, makeStyles, Toolbar, Typography } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import React from 'react';
+import { useSelector } from 'react-redux';
 import Logo from '../Logo';
 
 // component style
@@ -10,12 +11,20 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     flexGrow: 1,
-    marginLeft: theme.spacing(3)
+    marginLeft: theme.spacing(3),
+    backgroundColor: 'inherit',
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '1.8rem'
+    },
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '1.2rem'
+    }
   }
 }));
 
 export default function Header({ openMenu }: { openMenu: React.Dispatch<React.SetStateAction<boolean>> }) {
   const classes = useStyles();
+  const headerTitle = useSelector<{ headerTitle: { title: string } }>((state) => state.headerTitle.title);
 
   return (
     <AppBar className={classes.appBar} position="fixed">
@@ -23,7 +32,7 @@ export default function Header({ openMenu }: { openMenu: React.Dispatch<React.Se
         <Logo />
 
         <Typography variant="h4" color="textPrimary" component="h1" className={classes.title}>
-          Rick and Morty
+          Rick and Morty - {headerTitle}
         </Typography>
 
         <Hidden smDown>
