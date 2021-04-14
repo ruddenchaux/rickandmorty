@@ -10,23 +10,30 @@ interface WrapperResponse {
 
 // create a basic `baseQuery` util
 const graphqlBaseQuery = ({ baseUrl }: { baseUrl: string }) => async ({ body }: { body: string }) => {
-  const result = await request<WrapperResponse>(baseUrl, body);
+  const promise = (function a(): Promise<WrapperResponse> {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        request<WrapperResponse>(baseUrl, body).then(resolve, reject);
+      }, 5000);
+    });
+  })();
+
+  const result = await promise;
   return { data: result };
 };
 
 // Define a service using a base URL and expected endpoints
 export const charactersApi = createApi({
   reducerPath: 'charactersApi',
-  // baseQuery: fetchBaseQuery({ baseUrl: 'https://pokeapi.co/api/v2/' }),
   baseQuery: graphqlBaseQuery({
     baseUrl: 'https://rickandmortyapi.com/graphql'
   }),
   endpoints: (builder) => ({
     getAll: builder.query({
-      query: () => ({
+      query: (page = 1) => ({
         body: gql`
           query {
-            characters(page: 1) {
+            characters(page: ${page}) {
               results {
                 id
                 name
