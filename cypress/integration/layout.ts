@@ -18,7 +18,6 @@ context('Layout', () => {
     it('Header contain title', () => {
       cy.get('header').within(() => {
         cy.contains('Rick and Morty').should('exist');
-        cy.get('[data-cy=button-menu]').should('have.attr', 'aria-label', 'open menu');
       });
     });
 

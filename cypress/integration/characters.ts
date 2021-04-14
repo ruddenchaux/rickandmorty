@@ -3,6 +3,12 @@ context('Characters', () => {
     cy.visit('/');
   });
 
+  it('Header contain Characters title', () => {
+    cy.get('header').within(() => {
+      cy.contains('Characters').should('exist');
+    });
+  });
+
   it('Have 20 Characters card', () => {
     cy.get('[data-cy=character-card]').should('have.length', 20);
   });
