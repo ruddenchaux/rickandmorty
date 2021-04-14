@@ -1,7 +1,10 @@
-import { Card, CardContent, CardMedia, Typography, makeStyles } from '@material-ui/core';
-
+import { Card, CardContent, makeStyles } from '@material-ui/core';
 import React from 'react';
 import { Character } from '../../models/Character';
+import CharacterCardFirstSeenIn from './CharacterCardFirstSeenIn';
+import CharacterCardLastLocation from './CharacterCardLastLocation';
+import CharacterCardMedia from './CharacterCardMedia';
+import CharacterCardTitle from './CharacterCardTitle';
 
 // component style
 const useStyles = makeStyles((theme) => ({
@@ -15,74 +18,23 @@ const useStyles = makeStyles((theme) => ({
   },
   cardDetails: {
     flex: 1
-  },
-  cardMedia: {
-    [theme.breakpoints.up('sm')]: {
-      width: 220
-    },
-    [theme.breakpoints.down('xs')]: {
-      height: 300
-    }
-  },
-  lastLocation: {
-    marginTop: theme.spacing(3)
   }
 }));
 
-function Title({ character }: { character: Character }) {
-  return (
-    <>
-      <Typography component="h2" variant="h4" data-cy="character-name">
-        {character.name}
-      </Typography>
-
-      <Typography variant="subtitle2" data-cy="character-status-species">
-        {character.status} - {character.species}
-      </Typography>
-    </>
-  );
-}
-
-function LastLocation({ character, className }: { character: Character; className: string }) {
-  return (
-    <div className={className}>
-      <Typography variant="subtitle2" color="textSecondary">
-        Last known location:
-      </Typography>
-      <Typography variant="subtitle1" paragraph data-cy="character-last-known-position">
-        {character.location.name}
-      </Typography>
-    </div>
-  );
-}
-
-function FirstSeenIn({ character }: { character: Character }) {
-  return (
-    <>
-      <Typography variant="subtitle2" color="textSecondary">
-        First seen in:
-      </Typography>
-      <Typography variant="subtitle1" data-cy="character-first-seen-in">
-        {character.episode[0].name}
-      </Typography>
-    </>
-  );
-}
-
-export default function CharacterCard({ character }: { character: Character }) {
+export default function CharacterCard({ character, isLoading }: { character: Character; isLoading: boolean }) {
   const classes = useStyles();
 
   return (
     <Card className={classes.card} data-cy="character-card">
-      <CardMedia className={classes.cardMedia} image={character.image} title={character.name} />
+      <CharacterCardMedia isLoading={isLoading} character={character} />
 
       <div className={classes.cardDetails}>
         <CardContent>
-          <Title character={character} />
+          <CharacterCardTitle isLoading={isLoading} character={character} />
 
-          <LastLocation className={classes.lastLocation} character={character} />
+          <CharacterCardLastLocation isLoading={isLoading} character={character} />
 
-          <FirstSeenIn character={character} />
+          <CharacterCardFirstSeenIn isLoading={isLoading} character={character} />
         </CardContent>
       </div>
     </Card>

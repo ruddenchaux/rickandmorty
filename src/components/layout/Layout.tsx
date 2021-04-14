@@ -34,13 +34,14 @@ const routes = [
 const useStyles = makeStyles((theme) => ({
   main: {
     backgroundColor: theme.palette.background.default,
-    paddingTop: theme.spacing(10),
-    paddingBottom: theme.spacing(10),
+    paddingTop: theme.spacing(9),
+    paddingBottom: theme.spacing(6),
+
     [theme.breakpoints.up('md')]: {
-      height: 'calc(100vh - 160px)'
+      height: 'calc(100vh - 120px)'
     },
     [theme.breakpoints.down('sm')]: {
-      height: 'calc(100vh - 56px - 160px)'
+      height: 'calc(100vh - 56px - 120px)'
     },
     overflow: 'auto'
   }
