@@ -2,7 +2,7 @@ import { createApi } from '@rtk-incubator/rtk-query';
 import { gql, request } from 'graphql-request';
 import { Character } from '../models/Character';
 
-interface WrapperResponse {
+export interface CharactersWrapperResponse {
   characters: {
     results: Character[];
   };
@@ -10,15 +10,7 @@ interface WrapperResponse {
 
 // create a basic `baseQuery` util
 const graphqlBaseQuery = ({ baseUrl }: { baseUrl: string }) => async ({ body }: { body: string }) => {
-  const promise = (function a(): Promise<WrapperResponse> {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        request<WrapperResponse>(baseUrl, body).then(resolve, reject);
-      }, 5000);
-    });
-  })();
-
-  const result = await promise;
+  const result = await request<CharactersWrapperResponse>(baseUrl, body);
   return { data: result };
 };
 

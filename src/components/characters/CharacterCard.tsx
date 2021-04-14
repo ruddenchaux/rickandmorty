@@ -21,20 +21,20 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function CharacterCard({ character, isLoading }: { character: Character; isLoading: boolean }) {
+export default function CharacterCard({ item, isLoading }: { item: Character; isLoading: boolean }) {
   const classes = useStyles();
 
   return (
     <Card className={classes.card} data-cy="character-card">
-      <CharacterCardMedia isLoading={isLoading} character={character} />
+      <CharacterCardMedia isLoading={isLoading} character={item} />
 
       <div className={classes.cardDetails}>
         <CardContent>
-          <CharacterCardTitle isLoading={isLoading} character={character} />
+          <CharacterCardTitle isLoading={isLoading} character={item} />
 
-          <CharacterCardLastLocation isLoading={isLoading} character={character} />
+          <CharacterCardLastLocation isLoading={isLoading} character={item} />
 
-          <CharacterCardFirstSeenIn isLoading={isLoading} character={character} />
+          <CharacterCardFirstSeenIn isLoading={isLoading} character={item} />
         </CardContent>
       </div>
     </Card>

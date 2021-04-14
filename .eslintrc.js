@@ -32,6 +32,8 @@ module.exports = {
       {
         endOfLine: 'auto'
       }
-    ]
+    ],
+    'no-debugger': 'off',
+    'react-hooks/exhaustive-deps': 'off'
   }
 };
