@@ -1,3 +1,14 @@
+# [0.4.0](https://github.com/ruddenchaux/rickandmorty/compare/0.3.1...0.4.0) (2021-04-14)
+
+
+### Features
+
+* **characters:** added dynamic data from api server ([120827e](https://github.com/ruddenchaux/rickandmorty/commit/120827e0055bf57324a20b842869fc3b26b22b2b))
+* **characters:** added infinite data loading ([795e3c9](https://github.com/ruddenchaux/rickandmorty/commit/795e3c9ed336ca2fa6d9f47dc0ddcb79347f0044))
+* **characters:** added page title on header ([496e20f](https://github.com/ruddenchaux/rickandmorty/commit/496e20fa8a1629200ec37c258c7e2c506da96f5c))
+* **characters:** added skeleton on data loading ([6ce003d](https://github.com/ruddenchaux/rickandmorty/commit/6ce003dd10bcfad7b6f58b27c57850fdde63f673))
+* **characters:** added static characters grid cards ([78b7c83](https://github.com/ruddenchaux/rickandmorty/commit/78b7c83e17b78dcc4acd5a286cb3f455f138d6c4))
+
 ## [0.3.1](https://github.com/ruddenchaux/rickandmorty/compare/0.3.0...0.3.1) (2021-04-13)
 
 # 0.3.0 (2021-04-13)
