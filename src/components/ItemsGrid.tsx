@@ -1,4 +1,4 @@
-import { Container, Grid, makeStyles } from '@material-ui/core';
+import { Container, Grid, GridSize, makeStyles } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
 import React, { LegacyRef } from 'react';
 import useGrid, { UseGridOptions } from '../hooks/useGrid';
@@ -35,11 +35,21 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ItemsGrid<T, K>({
   ComponentCard,
-  useGetAllQuery
+  useGetAllQuery,
+  xs,
+  sm,
+  md,
+  lg,
+  xl
 }: {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   ComponentCard: React.ComponentType<any>;
   useGetAllQuery: UseGridOptions<T, K>['useGetAllQuery'];
+  xs: GridSize;
+  sm: GridSize;
+  md: GridSize;
+  lg: GridSize;
+  xl: GridSize;
 }) {
   const classes = useStyles();
   const pageSize = 20;
@@ -75,7 +85,7 @@ export default function ItemsGrid<T, K>({
         {(isFetching || isLoading ? paginatedData.concat(Array.from(new Array(pageSize))) : paginatedData).map(
           (item: T, index) => (
             // eslint-disable-next-line react/no-array-index-key
-            <Grid item key={index} xs={12} lg={6} xl={4}>
+            <Grid item key={index} xs={xs} sm={sm} md={md} lg={lg} xl={xl}>
               <ComponentCard
                 // loading only the new cards
                 isLoading={(isFetching || isLoading) && index >= (page - 1) * pageSize}
