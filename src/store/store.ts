@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@rtk-incubator/rtk-query';
 import { charactersApi } from '../services/characters';
 import { locationsApi } from '../services/locations';
+import { charactersDialogSlice } from './charactersDialog';
 import { headerTitleSlice } from './headerTitleStore';
 
 const store = configureStore({
@@ -9,7 +10,8 @@ const store = configureStore({
     // Add the generated reducer as a specific top-level slice
     [charactersApi.reducerPath]: charactersApi.reducer,
     [locationsApi.reducerPath]: locationsApi.reducer,
-    headerTitle: headerTitleSlice.reducer
+    headerTitle: headerTitleSlice.reducer,
+    charactersDialog: charactersDialogSlice.reducer
   },
   // Adding the api middleware enables caching, invalidation, polling,
   // and other useful features of `rtk-query`.
