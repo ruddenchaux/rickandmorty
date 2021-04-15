@@ -1,6 +1,8 @@
 import { createApi } from '@rtk-incubator/rtk-query';
 import { gql, request } from 'graphql-request';
 
+const BASE_URL = 'https://rickandmortyapi.com/graphql';
+
 export interface LocationsWrapperResponse {
   locations: {
     results: Location[];
@@ -8,16 +10,16 @@ export interface LocationsWrapperResponse {
 }
 
 // create a basic `baseQuery` util
-const graphqlBaseQuery = ({ baseUrl }: { baseUrl: string }) => async ({ body }: { body: string }) => {
-  const result = await request<LocationsWrapperResponse>(baseUrl, body);
+const graphqlBaseQuery = <T>({ baseUrl }: { baseUrl: string }) => async ({ body }: { body: string }) => {
+  const result = await request<T>(baseUrl, body);
   return { data: result };
 };
 
 // Define a service using a base URL and expected endpoints
 export const locationsApi = createApi({
   reducerPath: 'locationsApi',
-  baseQuery: graphqlBaseQuery({
-    baseUrl: 'https://rickandmortyapi.com/graphql'
+  baseQuery: graphqlBaseQuery<LocationsWrapperResponse>({
+    baseUrl: BASE_URL
   }),
   endpoints: (builder) => ({
     getAll: builder.query({
@@ -33,7 +35,15 @@ export const locationsApi = createApi({
                 residents {
                   id
                   name
+                  status
+                  species
                   image
+                  location {
+                    name
+                  }
+                  episode {
+                    name
+                  }
                 }
               }
             }
@@ -47,6 +57,4 @@ export const locationsApi = createApi({
   })
 });
 
-// Export hooks for usage in functional components, which are
-// auto-generated based on the defined endpoints
 export const { useGetAllQuery } = locationsApi;

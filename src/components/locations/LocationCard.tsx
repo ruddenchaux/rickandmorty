@@ -1,7 +1,8 @@
-import { Card, CardContent, makeStyles } from '@material-ui/core';
+import { Card, CardContent, Grid, makeStyles } from '@material-ui/core';
 import React from 'react';
 import { Location } from '../../models/Location';
 import LocationCardDimension from './LocationCardDimension';
+import LocationCardResidents from './LocationCardResidents';
 import LocationCardTitle from './LocationCardTitle';
 import LocationCardType from './LocationCardType';
 
@@ -28,9 +29,16 @@ export default function LocationCard({ item, isLoading }: { item: Location; isLo
       <CardContent className={classes.cardDetails}>
         <LocationCardTitle isLoading={isLoading} location={item} />
 
-        <LocationCardType isLoading={isLoading} location={item} />
+        <Grid container>
+          <Grid item xs={12} sm={5} md={5} lg={5} xl={5}>
+            <LocationCardType isLoading={isLoading} location={item} />
+            <LocationCardDimension isLoading={isLoading} location={item} />
+          </Grid>
 
-        <LocationCardDimension isLoading={isLoading} location={item} />
+          <Grid item xs={12} sm={7} md={7} lg={7} xl={7}>
+            <LocationCardResidents isLoading={isLoading} location={item} />
+          </Grid>
+        </Grid>
       </CardContent>
     </Card>
   );
