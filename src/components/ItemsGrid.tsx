@@ -1,37 +1,8 @@
-import { Container, Grid, GridSize, makeStyles } from '@material-ui/core';
+import { Container, Grid, GridSize } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
 import React, { LegacyRef } from 'react';
 import useGrid, { UseGridOptions } from '../hooks/useGrid';
-
-// component style
-const useStyles = makeStyles((theme) => ({
-  title: {
-    marginLeft: theme.spacing(3)
-  },
-  cardGrid: {
-    paddingTop: theme.spacing(4),
-    paddingLeft: theme.spacing(6),
-    paddingRight: theme.spacing(6),
-
-    [theme.breakpoints.down('lg')]: {
-      paddingLeft: '8rem',
-      paddingRight: '8rem'
-    },
-
-    [theme.breakpoints.down('md')]: {
-      paddingLeft: '12rem',
-      paddingRight: '12rem'
-    },
-    [theme.breakpoints.down('sm')]: {
-      paddingLeft: theme.spacing(6),
-      paddingRight: theme.spacing(6)
-    }
-  },
-  loadingText: {
-    textAlign: 'center',
-    color: theme.palette.text.hint
-  }
-}));
+import useGridStyle from '../hooks/useGridStyle';
 
 export default function ItemsGrid<T, K>({
   ComponentCard,
@@ -51,7 +22,7 @@ export default function ItemsGrid<T, K>({
   lg: GridSize;
   xl: GridSize;
 }) {
-  const classes = useStyles();
+  const classes = useGridStyle();
   const pageSize = 20;
   const startPage = 1;
 
