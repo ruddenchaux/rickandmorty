@@ -7,13 +7,13 @@ export const headerTitleSlice = createSlice({
     title: ''
   },
   reducers: {
-    set: (state, action) => {
+    setHeaderTitle: (state, action) => {
       state.title = action.payload;
     }
   }
 });
 
 // Action creators are generated for each case reducer function
-export const { set } = headerTitleSlice.actions;
+export const { setHeaderTitle } = headerTitleSlice.actions;
 
 export default headerTitleSlice.reducer;
