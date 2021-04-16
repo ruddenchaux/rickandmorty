@@ -1,3 +1,18 @@
+# [0.5.0](https://github.com/ruddenchaux/rickandmorty/compare/0.4.0...0.5.0) (2021-04-16)
+
+
+### Bug Fixes
+
+* **layout:** fix layout test ([4a0f407](https://github.com/ruddenchaux/rickandmorty/commit/4a0f407dc588f3180d9a0f1d439277edc1c6c066))
+
+
+### Features
+
+* **characters-dialog:** added fulscreen characters dialog ([c797a67](https://github.com/ruddenchaux/rickandmorty/commit/c797a67d4a6a09a5d76f70324f6995ae0dedcce4))
+* **episodes:** added episodes page ([8859e13](https://github.com/ruddenchaux/rickandmorty/commit/8859e13da5b3d335021ac3460b31055d12fc3ab4))
+* **locations:** added a residents avatars on locations grid card ([221130e](https://github.com/ruddenchaux/rickandmorty/commit/221130eb31ef473a794db2c5965e203042d3fde6))
+* **locations:** added locations page ([25fccf2](https://github.com/ruddenchaux/rickandmorty/commit/25fccf2f690405dfb675475c77c84c147ad1a3a4))
+
 # [0.4.0](https://github.com/ruddenchaux/rickandmorty/compare/0.3.1...0.4.0) (2021-04-14)
 
 
