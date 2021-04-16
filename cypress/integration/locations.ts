@@ -25,6 +25,14 @@ context('Locations', () => {
     cy.get('[data-cy=location-dimension]').should('have.length', 20);
   });
 
+  it('LocationCard view more characters', () => {
+    cy.get('[data-cy=characters-view-more]').first().click();
+    cy.get('[data-cy=characters-fullscreen-dialog-content]').should('exist');
+    cy.get('[data-cy=characters-fullscreen-dialog-title]').contains(/Residents of \w+ location/);
+    cy.get('[data-cy=characters-fullscreen-close-btn]').click();
+    cy.get('[data-cy=characters-fullscreen-dialog-content]').should('not.exist');
+  });
+
   describe('LocationCard infinite loading', () => {
     for (let i = 0; i < 2; i++) {
       it(`Loading page ${i + 1}`, () => {

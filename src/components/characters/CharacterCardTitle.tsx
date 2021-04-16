@@ -1,20 +1,11 @@
-import { Typography, makeStyles } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 import { Skeleton } from '@material-ui/lab';
 import React from 'react';
+import useCardTitleEllipsisStyle from '../../hooks/useCardTitleEllipsisStyle';
 import { Character } from '../../models/Character';
 
-// component style
-const useStyles = makeStyles(() => ({
-  cardTitle: {
-    width: '320px',
-    whiteSpace: 'nowrap',
-    overflow: 'hidden',
-    textOverflow: 'ellipsis'
-  }
-}));
-
 export default function CharacterCardTitle({ character, isLoading }: { character: Character; isLoading: boolean }) {
-  const classes = useStyles();
+  const classes = useCardTitleEllipsisStyle('320px')();
 
   if (isLoading) {
     return (
@@ -27,7 +18,7 @@ export default function CharacterCardTitle({ character, isLoading }: { character
 
   return (
     <>
-      <Typography className={classes.cardTitle} component="h2" variant="h4" data-cy="character-name">
+      <Typography className={classes.ellipsis} component="h2" variant="h5" data-cy="character-name">
         {character.name}
       </Typography>
 

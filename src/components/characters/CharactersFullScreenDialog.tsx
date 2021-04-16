@@ -1,4 +1,15 @@
-import { AppBar, Container, Dialog, Grid, IconButton, makeStyles, Slide, Toolbar, Typography } from '@material-ui/core';
+import {
+  AppBar,
+  Container,
+  Dialog,
+  DialogContent,
+  Grid,
+  IconButton,
+  makeStyles,
+  Slide,
+  Toolbar,
+  Typography
+} from '@material-ui/core';
 import { TransitionProps } from '@material-ui/core/transitions';
 import CloseIcon from '@material-ui/icons/Close';
 import React from 'react';
@@ -17,7 +28,8 @@ const useStyles = makeStyles((theme) => ({
     flex: 1
   },
   dialog: {
-    background: theme.palette.background.default
+    background: theme.palette.background.default,
+    padding: 0
   }
 }));
 
@@ -52,22 +64,30 @@ export default function CharactersFullScreenDialog() {
   return (
     <Dialog
       fullScreen
+      scroll="paper"
       open={open || false}
       onClose={handleClose}
       TransitionComponent={Transition as React.ComponentType<TransitionProps>}
     >
       <AppBar className={classes.appBar}>
         <Toolbar>
-          <Typography variant="h6" className={classes.title}>
+          <Typography data-cy="characters-fullscreen-dialog-title" variant="h6" className={classes.title}>
             {title}
           </Typography>
-          <IconButton autoFocus edge="end" color="inherit" onClick={handleClose} aria-label="close">
+          <IconButton
+            data-cy="characters-fullscreen-close-btn"
+            autoFocus
+            edge="end"
+            color="inherit"
+            onClick={handleClose}
+            aria-label="close"
+          >
             <CloseIcon />
           </IconButton>
         </Toolbar>
       </AppBar>
 
-      <div className={classes.dialog}>
+      <DialogContent className={classes.dialog} data-cy="characters-fullscreen-dialog-content">
         <Container className={gridClasses.cardGrid} maxWidth="xl">
           <Grid container spacing={4}>
             {characters?.map((item: Character) => (
@@ -77,7 +97,7 @@ export default function CharactersFullScreenDialog() {
             ))}
           </Grid>
         </Container>
-      </div>
+      </DialogContent>
     </Dialog>
   );
 }

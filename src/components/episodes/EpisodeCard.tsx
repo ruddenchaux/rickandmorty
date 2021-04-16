@@ -1,10 +1,10 @@
 import { Card, CardContent, Grid, makeStyles } from '@material-ui/core';
 import React from 'react';
-import { Location } from '../../models/Location';
+import { Episode } from '../../models/Episode';
 import CharactersAvatars from '../characters/CharactersAvatars';
-import LocationCardDimension from './LocationCardDimension';
-import LocationCardTitle from './LocationCardTitle';
-import LocationCardType from './LocationCardType';
+import EpisodeCardAirDate from './EpisodeCardAirDate';
+import EpisodeCardEpisode from './EpisodeCardEpisode';
+import EpisodeCardTitle from './EpisodeCardTitle';
 
 // component style
 const useStyles = makeStyles((theme) => ({
@@ -21,23 +21,23 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function LocationCard({ item, isLoading }: { item: Location; isLoading: boolean }) {
+export default function EpisodeCard({ item, isLoading }: { item: Episode; isLoading: boolean }) {
   const classes = useStyles();
 
   return (
-    <Card className={classes.card} data-cy="location-card">
+    <Card className={classes.card} data-cy="episode-card">
       <CardContent className={classes.cardDetails}>
-        <LocationCardTitle isLoading={isLoading} location={item} />
+        <EpisodeCardTitle isLoading={isLoading} episode={item} />
 
         <Grid container>
           <Grid item xs={12} sm={5} md={5} lg={5} xl={5}>
             <Grid container>
               <Grid item xs={6} sm={12}>
-                <LocationCardType isLoading={isLoading} location={item} />
+                <EpisodeCardEpisode isLoading={isLoading} episode={item} />
               </Grid>
 
               <Grid item xs={6} sm={12}>
-                <LocationCardDimension isLoading={isLoading} location={item} />
+                <EpisodeCardAirDate isLoading={isLoading} episode={item} />
               </Grid>
             </Grid>
           </Grid>
@@ -45,8 +45,8 @@ export default function LocationCard({ item, isLoading }: { item: Location; isLo
           <Grid item xs={12} sm={7} md={7} lg={7} xl={7}>
             <CharactersAvatars
               label="Characters"
-              characters={item?.residents}
-              dialogTitle={`Residents of ${item?.name} location`}
+              characters={item?.characters}
+              dialogTitle={`Characters in ${item?.name} episode`}
               isLoading={isLoading}
             />
           </Grid>

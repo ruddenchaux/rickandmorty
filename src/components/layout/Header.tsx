@@ -2,6 +2,7 @@ import { AppBar, Hidden, IconButton, makeStyles, Toolbar, Typography } from '@ma
 import MenuIcon from '@material-ui/icons/Menu';
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import Logo from '../Logo';
 
 // component style
@@ -29,7 +30,9 @@ export default function Header({ openMenu }: { openMenu: React.Dispatch<React.Se
   return (
     <AppBar className={classes.appBar} position="fixed">
       <Toolbar>
-        <Logo />
+        <NavLink to="/">
+          <Logo />
+        </NavLink>
 
         <Typography variant="h4" color="textPrimary" component="h1" className={classes.title}>
           Rick and Morty - {headerTitle}
