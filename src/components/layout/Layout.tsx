@@ -1,10 +1,34 @@
 import { Hidden, makeStyles } from '@material-ui/core';
 import React, { useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import routes from '../../utils/routes';
+import Characters from '../../pages/Characters';
+import Episodes from '../../pages/Episodes';
+import Favorites from '../../pages/Favorites';
+import Locations from '../../pages/Locations';
 import BottomNavigation from './BottomNavigation';
 import Header from './Header';
 import Sidebar from './Sidebar';
+
+// routes config
+const routes = [
+  {
+    path: '/',
+    exact: true,
+    component: Characters
+  },
+  {
+    path: '/locations',
+    component: Locations
+  },
+  {
+    path: '/episodes',
+    component: Episodes
+  },
+  {
+    path: '/favorites',
+    component: Favorites
+  }
+];
 
 // component style
 const useStyles = makeStyles((theme) => ({
