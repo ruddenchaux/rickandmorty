@@ -69,10 +69,12 @@ context('Layout', () => {
 
       itemsMenu.forEach((item) => {
         it(item.label, () => {
-          cy.get(`[href="${item.to}"]`).click();
+          cy.get(`[data-cy="item-menu"][href="${item.to}"]`).click();
 
           openMenu();
-          cy.get(`[href="${item.to}"]`).should('satisfy', ($el) => $el[0].classList.contains('active'));
+          cy.get(`[data-cy="item-menu"][href="${item.to}"]`).should('satisfy', ($el) =>
+            $el[0].classList.contains('active')
+          );
 
           cy.location().should((loc) => {
             expect(loc.pathname).to.include(item.to);

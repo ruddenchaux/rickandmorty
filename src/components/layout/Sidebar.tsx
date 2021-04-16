@@ -1,7 +1,7 @@
 import { Divider, Drawer, List, ListItem, ListItemIcon, ListItemText, makeStyles, Typography } from '@material-ui/core';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import routes from '../../utils/routes';
+import itemsMenu from '../../utils/itemsMenu';
 
 const useStyles = makeStyles((theme) => {
   const listItem = {
@@ -68,20 +68,20 @@ export default function Sidebar({
   const list = (
     <div className={classes.list} role="presentation" onClick={closeDrawer()} onKeyDown={closeDrawer()}>
       <List>
-        {routes.map((item) => (
+        {itemsMenu.map((item) => (
           <ListItem
             button
-            key={item.menu.label}
+            key={item.label}
             className={classes.listItem}
             component={NavLink}
-            to={item.path}
+            to={item.to}
             exact
             data-cy="item-menu"
           >
             <ListItemIcon>
-              <item.menu.icon data-cy="item-menu-icon" />
+              <item.icon data-cy="item-menu-icon" />
             </ListItemIcon>
-            <ListItemText primary={item.menu.label} />
+            <ListItemText primary={item.label} />
           </ListItem>
         ))}
       </List>
