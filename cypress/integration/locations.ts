@@ -1,4 +1,5 @@
 context('Locations', () => {
+  
   it('Header contain Locations title', () => {
     cy.visit('/locations');
 
@@ -6,6 +7,7 @@ context('Locations', () => {
       cy.contains('Locations').should('exist');
     });
   });
+
 
   it('Failed status', () => {
     cy.intercept('POST', '/graphql').as('locations');
@@ -56,5 +58,6 @@ context('Locations', () => {
         });
       }
     });
+
   });
 });
