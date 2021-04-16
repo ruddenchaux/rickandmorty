@@ -1,7 +1,7 @@
 import { BottomNavigation as MuiBottomNavigation, BottomNavigationAction, makeStyles } from '@material-ui/core';
 import React from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
-import itemsMenu from '../../utils/itemsMenu';
+import routes from '../../utils/routes';
 
 // component style
 const useStyles = makeStyles(() => ({
@@ -30,12 +30,12 @@ export default function BottomNavigation() {
       showLabels
       data-cy="bottom-navigation"
     >
-      {itemsMenu.map((item) => (
+      {routes.map((item) => (
         <BottomNavigationAction
-          key={item.label}
-          label={item.label}
-          value={item.to}
-          icon={<item.icon data-cy="bottom-navigation-action-icon" />}
+          key={item.menu.label}
+          label={item.menu.label}
+          value={item.path}
+          icon={<item.menu.icon data-cy="bottom-navigation-action-icon" />}
           data-cy="bottom-navigation-action"
         />
       ))}

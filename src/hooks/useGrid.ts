@@ -41,7 +41,7 @@ export default <T, K>({ pageSize, startPage, useGetAllQuery }: UseGridOptions<T,
   const [paginatedData, setPaginatedData] = useState<T[]>([]);
 
   // fetch data and get the status
-  const { data, error, isFetching, isLoading } = useGetAllQuery(page);
+  const { data, error, isFetching, isLoading, isSuccess } = useGetAllQuery(page);
 
   // hook for handle infinite loading
   const [containerRef, loadMore] = useIntersectionObserver({
@@ -88,6 +88,7 @@ export default <T, K>({ pageSize, startPage, useGetAllQuery }: UseGridOptions<T,
     error,
     isFetching,
     isLoading,
+    isSuccess,
     containerRef,
     loadMore
   };

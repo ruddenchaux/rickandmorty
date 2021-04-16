@@ -27,7 +27,7 @@ export default function ItemsGrid<T, K>({
   const startPage = 1;
 
   // use hook for handle the fetch api request with infinite loading
-  const { page, isLastPage, paginatedData, error, isFetching, isLoading, containerRef } = useGrid({
+  const { page, isLastPage, data: characters, paginatedData, error, isFetching, isLoading, containerRef } = useGrid({
     pageSize,
     startPage,
     useGetAllQuery
@@ -41,7 +41,7 @@ export default function ItemsGrid<T, K>({
     );
   }
 
-  if (!isFetching && !isLoading && !paginatedData?.length) {
+  if (!isFetching && !isLoading && !paginatedData?.length && !characters?.length) {
     return (
       <Container className={classes.cardGrid} maxWidth="md">
         <Alert severity="info">There are no data!</Alert>

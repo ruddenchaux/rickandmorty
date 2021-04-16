@@ -9,7 +9,7 @@ export default function LocationCardTitle({ location, isLoading }: { location: L
   }
 
   return (
-    <Typography component="h2" variant="h4" data-cy="location-name">
+    <Typography component="h2" variant="h5" data-cy="location-name">
       {location.name}
     </Typography>
   );

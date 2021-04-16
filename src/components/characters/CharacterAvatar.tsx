@@ -12,18 +12,12 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function LocationCardResidentAvatar({
-  resident,
-  isLoading
-}: {
-  resident: Character;
-  isLoading: boolean;
-}) {
+export default function CharacterAvatar({ character, isLoading }: { character: Character; isLoading: boolean }) {
   const classes = useStyles();
 
   if (isLoading) {
     return <Skeleton className={classes.large} variant="circle" />;
   }
 
-  return <Avatar alt={resident.name} src={resident.image} className={classes.large} />;
+  return <Avatar alt={character.name} src={character.image} className={classes.large} />;
 }
