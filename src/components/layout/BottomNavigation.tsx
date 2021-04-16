@@ -1,5 +1,5 @@
 import { BottomNavigation as MuiBottomNavigation, BottomNavigationAction, makeStyles } from '@material-ui/core';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import itemsMenu from '../../utils/itemsMenu';
 
@@ -17,7 +17,12 @@ export default function BottomNavigation() {
   const classes = useStyles();
   const history = useHistory();
   const location = useLocation();
-  const [value, setValue] = React.useState(location.pathname);
+  const [value, setValue] = useState(location.pathname);
+
+  // update the active nav link on route change
+  useEffect(() => {
+    setValue(location.pathname);
+  }, [location]);
 
   return (
     <MuiBottomNavigation
