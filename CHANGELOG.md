@@ -1,3 +1,10 @@
+## [0.5.3](https://github.com/ruddenchaux/rickandmorty/compare/0.5.2...0.5.3) (2021-04-16)
+
+
+### Bug Fixes
+
+* **bottom-navigation:** fix the active link on route change ([f3e1a7e](https://github.com/ruddenchaux/rickandmorty/commit/f3e1a7e2a23ad227bdfebd4b82dcde319ca206a9))
+
 ## [0.5.2](https://github.com/ruddenchaux/rickandmorty/compare/0.5.1...0.5.2) (2021-04-16)
 
 ## [0.5.1](https://github.com/ruddenchaux/rickandmorty/compare/0.5.0...0.5.1) (2021-04-16)
