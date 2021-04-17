@@ -17,7 +17,7 @@ context('Layout', () => {
 
     it('Header contain title', () => {
       cy.get('header').within(() => {
-        cy.contains('Rick and Morty').should('exist');
+        cy.contains('Rick and Morty');
       });
     });
 
@@ -51,7 +51,7 @@ context('Layout', () => {
       itemsMenu.forEach((item) => {
         it(item.label, () => {
           cy.get('[data-cy=sidebar] [data-cy=item-menu]').within(() => {
-            cy.contains(item.label).should('exist');
+            cy.contains(item.label);
             cy.get('[data-cy=item-menu-icon]').should('exist');
           });
         });
@@ -102,7 +102,7 @@ context('Layout', () => {
       itemsMenu.forEach((item) => {
         it(item.label, () => {
           cy.get('[data-cy=bottom-navigation] [data-cy=bottom-navigation-action]').within(() => {
-            cy.contains(item.label).should('exist');
+            cy.contains(item.label);
             cy.get('[data-cy=bottom-navigation-action-icon]').should('exist');
           });
         });

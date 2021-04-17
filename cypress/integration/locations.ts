@@ -3,7 +3,7 @@ context('Locations', () => {
     cy.visit('/locations');
 
     cy.get('header').within(() => {
-      cy.contains('Locations').should('exist');
+      cy.contains('Locations');
     });
   });
 

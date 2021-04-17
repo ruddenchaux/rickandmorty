@@ -5,7 +5,7 @@ context('Characters', () => {
 
   it('Header contain Characters title', () => {
     cy.get('header').within(() => {
-      cy.contains('Characters').should('exist');
+      cy.contains('Characters');
     });
   });
 
