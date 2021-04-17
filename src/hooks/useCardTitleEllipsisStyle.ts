@@ -7,5 +7,9 @@ export default () =>
       whiteSpace: 'nowrap',
       overflow: 'hidden',
       textOverflow: 'ellipsis'
+    },
+    favoriteActions: {
+      padding: 0,
+      float: 'right'
     }
   }));

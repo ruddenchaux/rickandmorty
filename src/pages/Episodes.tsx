@@ -5,7 +5,7 @@ import EpisodeCard from '../components/episodes/EpisodeCard';
 import ItemsGrid from '../components/ItemsGrid';
 import { Episode } from '../models/Episode';
 import { EpisodesWrapperResponse, useGetAllQuery } from '../services/episodes';
-import { setHeaderTitle } from '../store/headerTitleStore';
+import { setHeaderTitle } from '../store/headerTitle';
 
 export default function Episodes() {
   const dispatch = useDispatch();
