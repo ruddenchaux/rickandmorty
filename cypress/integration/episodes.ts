@@ -5,7 +5,7 @@ context('Episodes', () => {
 
   it('Header contain Episodes title', () => {
     cy.get('header').within(() => {
-      cy.contains('Episodes').should('exist');
+      cy.contains('Episodes');
     });
   });
 
