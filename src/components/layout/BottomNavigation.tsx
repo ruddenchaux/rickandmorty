@@ -21,7 +21,7 @@ export default function BottomNavigation() {
 
   // update the active nav link on route change
   useEffect(() => {
-    setValue(location.pathname);
+    setValue(location.pathname.replace(/((\/\w+))(\/\w+)*/, (match, p1) => p1));
   }, [location]);
 
   return (

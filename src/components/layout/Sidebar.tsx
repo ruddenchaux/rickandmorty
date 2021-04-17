@@ -75,7 +75,7 @@ export default function Sidebar({
             className={classes.listItem}
             component={NavLink}
             to={item.to}
-            exact
+            exact={item.exact}
             data-cy="item-menu"
           >
             <ListItemIcon>
