@@ -3,6 +3,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import { HeaderTitleState } from '../../store/headerTitle';
 import Logo from '../Logo';
 
 // component style
@@ -25,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Header({ openMenu }: { openMenu: React.Dispatch<React.SetStateAction<boolean>> }) {
   const classes = useStyles();
-  const headerTitle = useSelector<{ headerTitle: { title: string } }>((state) => state.headerTitle.title);
+  const headerTitle = useSelector<HeaderTitleState>((state) => state.headerTitle.title);
 
   return (
     <AppBar className={classes.appBar} position="fixed">
