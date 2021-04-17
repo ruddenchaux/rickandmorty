@@ -17,6 +17,19 @@ context('Episodes', () => {
     cy.get('[data-cy=episode-name]').should('have.length', 20);
   });
 
+  it('EpisodeCard have a favorites action', () => {
+    cy.get('[data-cy=episode-favorite-action]').should('have.length', 20);
+    cy.get('[data-cy=episode-not-favorite-icon]').should('have.length', 20);
+  });
+
+  it('Toggle favorite', () => {
+    cy.get('[data-cy=episode-favorite-action]').first().click();
+    cy.get('[data-cy=episode-favorite-icon]').should('exist');
+
+    cy.get('[data-cy=episode-favorite-action]').first().click();
+    cy.get('[data-cy=episode-not-favorite-icon]').should('exist');
+  });
+
   it('EpisodeCard have a episode', () => {
     cy.get('[data-cy=episode-episode]').should('have.length', 20);
   });
