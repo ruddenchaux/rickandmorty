@@ -1,3 +1,11 @@
+## [0.5.4](https://github.com/ruddenchaux/rickandmorty/compare/0.5.3...0.5.4) (2021-04-17)
+
+
+### Bug Fixes
+
+* **card-title:** fixed card title width ([00fdd81](https://github.com/ruddenchaux/rickandmorty/commit/00fdd81c48fe948ae3e999bab38e10fae085034f))
+* **grid-mobile-padding:** fix the padding on mobile grid ([7fada89](https://github.com/ruddenchaux/rickandmorty/commit/7fada894b4613483107d235e94d29fed9891a659))
+
 ## [0.5.3](https://github.com/ruddenchaux/rickandmorty/compare/0.5.2...0.5.3) (2021-04-16)
 
 
