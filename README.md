@@ -1,14 +1,12 @@
-# Rickandmorty
+# Rick and Morty
 
-Discover the Rick and Morty world
-
+Discover the Rick and Morty world https://rickandmortywebapp.netlify.app.
 
 ## Roadmap
 
-- [ ] Characters
-- [ ] Locations
-- [ ] Episodes
+- [X] Characters
+- [X] Locations
+- [X] Episodes
 - [ ] Favorites
 - [x] Responsive template
 - [ ] PWA
-- [ ] Internationalizzations
