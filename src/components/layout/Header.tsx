@@ -31,7 +31,7 @@ export default function Header({ openMenu }: { openMenu: React.Dispatch<React.Se
   return (
     <AppBar className={classes.appBar} position="fixed">
       <Toolbar>
-        <NavLink to="/">
+        <NavLink to="/" aria-label="Rick and Morty">
           <Logo />
         </NavLink>
 

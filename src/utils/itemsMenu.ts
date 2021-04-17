@@ -4,6 +4,7 @@ export default [
   {
     label: 'Characters',
     icon: Face,
+    exact: true,
     to: '/'
   },
   {
