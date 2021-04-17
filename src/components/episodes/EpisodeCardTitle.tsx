@@ -5,7 +5,7 @@ import { Episode } from '../../models/Episode';
 import useCardTitleEllipsisStyle from '../../hooks/useCardTitleEllipsisStyle';
 
 export default function EpisodeCardTitle({ episode, isLoading }: { episode: Episode; isLoading: boolean }) {
-  const classes = useCardTitleEllipsisStyle('476px')();
+  const classes = useCardTitleEllipsisStyle()();
 
   if (isLoading) {
     return <Skeleton height={44} />;

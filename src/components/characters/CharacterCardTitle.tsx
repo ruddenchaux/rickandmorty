@@ -5,7 +5,7 @@ import useCardTitleEllipsisStyle from '../../hooks/useCardTitleEllipsisStyle';
 import { Character } from '../../models/Character';
 
 export default function CharacterCardTitle({ character, isLoading }: { character: Character; isLoading: boolean }) {
-  const classes = useCardTitleEllipsisStyle('320px')();
+  const classes = useCardTitleEllipsisStyle()();
 
   if (isLoading) {
     return (
