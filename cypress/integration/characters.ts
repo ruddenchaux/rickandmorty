@@ -17,6 +17,19 @@ context('Characters', () => {
     cy.get('[data-cy=character-name]').should('have.length', 20);
   });
 
+  it('CharacterCard have a favorites action', () => {
+    cy.get('[data-cy=character-favorite-action]').should('have.length', 20);
+    cy.get('[data-cy=character-not-favorite-icon]').should('have.length', 20);
+  });
+
+  it('Toggle favorite', () => {
+    cy.get('[data-cy=character-favorite-action]').first().click();
+    cy.get('[data-cy=character-favorite-icon]').should('exist');
+
+    cy.get('[data-cy=character-favorite-action]').first().click();
+    cy.get('[data-cy=character-not-favorite-icon]').should('exist');
+  });
+
   it('CharacterCard have a status and species', () => {
     cy.get('[data-cy=character-status-species]').should('have.length', 20);
   });

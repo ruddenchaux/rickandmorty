@@ -1,5 +1,4 @@
 context('Locations', () => {
-  
   it('Header contain Locations title', () => {
     cy.visit('/locations');
 
@@ -7,7 +6,6 @@ context('Locations', () => {
       cy.contains('Locations').should('exist');
     });
   });
-
 
   it('Failed status', () => {
     cy.intercept('POST', '/graphql').as('locations');
@@ -30,6 +28,19 @@ context('Locations', () => {
 
     it('LocationCard have a name', () => {
       cy.get('[data-cy=location-name]').should('have.length', 20);
+    });
+
+    it('LocationCard have a favorites action', () => {
+      cy.get('[data-cy=location-favorite-action]').should('have.length', 20);
+      cy.get('[data-cy=location-not-favorite-icon]').should('have.length', 20);
+    });
+
+    it('Toggle favorite', () => {
+      cy.get('[data-cy=location-favorite-action]').first().click();
+      cy.get('[data-cy=location-favorite-icon]').should('exist');
+
+      cy.get('[data-cy=location-favorite-action]').first().click();
+      cy.get('[data-cy=location-not-favorite-icon]').should('exist');
     });
 
     it('LocationCard have a type', () => {
@@ -58,6 +69,5 @@ context('Locations', () => {
         });
       }
     });
-
   });
 });
