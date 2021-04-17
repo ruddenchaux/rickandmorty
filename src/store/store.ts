@@ -4,7 +4,8 @@ import { charactersApi } from '../services/characters';
 import { episodesApi } from '../services/episodes';
 import { locationsApi } from '../services/locations';
 import { charactersDialogSlice } from './charactersDialog';
-import { headerTitleSlice } from './headerTitleStore';
+import { favoritesSlice } from './favorites';
+import { headerTitleSlice } from './headerTitle';
 
 const store = configureStore({
   reducer: {
@@ -13,7 +14,8 @@ const store = configureStore({
     [locationsApi.reducerPath]: locationsApi.reducer,
     [episodesApi.reducerPath]: episodesApi.reducer,
     headerTitle: headerTitleSlice.reducer,
-    charactersDialog: charactersDialogSlice.reducer
+    charactersDialog: charactersDialogSlice.reducer,
+    favorites: favoritesSlice.reducer
   },
   // Adding the api middleware enables caching, invalidation, polling,
   // and other useful features of `rtk-query`.
