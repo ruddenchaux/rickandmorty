@@ -4,7 +4,7 @@ import CharactersFullScreenDialog from '../components/characters/CharactersFullS
 import ItemsGrid from '../components/ItemsGrid';
 import LocationCard from '../components/locations/LocationCard';
 import { LocationsWrapperResponse, useGetAllQuery } from '../services/locations';
-import { setHeaderTitle } from '../store/headerTitleStore';
+import { setHeaderTitle } from '../store/headerTitle';
 
 export default function Locations() {
   const dispatch = useDispatch();

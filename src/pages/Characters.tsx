@@ -4,7 +4,7 @@ import CharacterCard from '../components/characters/CharacterCard';
 import ItemsGrid from '../components/ItemsGrid';
 import { Character } from '../models/Character';
 import { CharactersWrapperResponse, useGetAllQuery } from '../services/characters';
-import { setHeaderTitle } from '../store/headerTitleStore';
+import { setHeaderTitle } from '../store/headerTitle';
 
 export default function Characters() {
   const dispatch = useDispatch();

@@ -45,15 +45,9 @@ export default function CharactersFullScreenDialog() {
   const classes = useStyles();
   const gridClasses = useGridStyle();
 
-  const open = useSelector<{ charactersDialog: CharactersDialogState }, boolean>(
-    (state) => state.charactersDialog.open
-  );
-  const title = useSelector<{ charactersDialog: CharactersDialogState }, string>(
-    (state) => state.charactersDialog.title
-  );
-  const characters = useSelector<{ charactersDialog: CharactersDialogState }, Character[]>(
-    (state) => state.charactersDialog.characters
-  );
+  const open = useSelector<CharactersDialogState, boolean>((state) => state.charactersDialog.open);
+  const title = useSelector<CharactersDialogState, string>((state) => state.charactersDialog.title);
+  const characters = useSelector<CharactersDialogState, Character[]>((state) => state.charactersDialog.characters);
 
   const dispatch = useDispatch();
 

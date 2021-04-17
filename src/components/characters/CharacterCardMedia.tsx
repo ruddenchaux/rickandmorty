@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme) => ({
   cardMedia: {
     height: 'auto',
     [theme.breakpoints.up('sm')]: {
-      width: 220
+      minWidth: 220
     },
     [theme.breakpoints.down('xs')]: {
       height: 300

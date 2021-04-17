@@ -3,9 +3,11 @@ import { createSlice } from '@reduxjs/toolkit';
 import { Character } from '../models/Character';
 
 export interface CharactersDialogState {
-  title: string;
-  open: boolean;
-  characters: Character[];
+  charactersDialog: {
+    title: string;
+    open: boolean;
+    characters: Character[];
+  };
 }
 
 export const charactersDialogSlice = createSlice({
