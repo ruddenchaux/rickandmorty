@@ -1,9 +1,9 @@
 import { makeStyles } from '@material-ui/core';
 
-export default (width: string) =>
+export default () =>
   makeStyles(() => ({
     ellipsis: {
-      width,
+      maxWidth: '100%',
       whiteSpace: 'nowrap',
       overflow: 'hidden',
       textOverflow: 'ellipsis'
