@@ -2,19 +2,18 @@ import { CardActions, Grid, IconButton, Typography } from '@material-ui/core';
 import { Favorite, FavoriteBorder } from '@material-ui/icons';
 import { Skeleton } from '@material-ui/lab';
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import useCardTitleEllipsisStyle from '../../hooks/useCardTitleEllipsisStyle';
+import useCardTitle from '../../hooks/useCardTitle';
 import { Character } from '../../models/Character';
-import { FavoritesState, selectFavoriteCharacter, toggleFavoriteCharacter } from '../../store/favorites';
+import { selectFavoriteCharacter, toggleFavoriteCharacter } from '../../store/favorites';
 
 export default function CharacterCardTitle({ character, isLoading }: { character: Character; isLoading: boolean }) {
-  const classes = useCardTitleEllipsisStyle()();
-  const dispatch = useDispatch();
-  const isFavorite = useSelector<FavoritesState>((state) => selectFavoriteCharacter(state, character?.id));
-
-  const toggleFavorite = () => {
-    dispatch(toggleFavoriteCharacter(character));
-  };
+  const { classes, toggleFavorite, isFavorite } = useCardTitle<Character>({
+    entityType: 'character',
+    entity: character,
+    favoritePath: '/favorites',
+    selectFavorite: selectFavoriteCharacter,
+    toggleFavoriteAction: toggleFavoriteCharacter
+  });
 
   if (isLoading) {
     return (

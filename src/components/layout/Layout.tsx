@@ -5,6 +5,7 @@ import Characters from '../../pages/Characters';
 import Episodes from '../../pages/Episodes';
 import Favorites from '../../pages/Favorites';
 import Locations from '../../pages/Locations';
+import FavoriteSnackbar from '../favorites/FavoriteSnackbar';
 import BottomNavigation from './BottomNavigation';
 import Header from './Header';
 import Sidebar from './Sidebar';
@@ -76,6 +77,7 @@ export default function Layout() {
       <Hidden mdUp>
         <BottomNavigation />
       </Hidden>
+      <FavoriteSnackbar />
     </>
   );
 }

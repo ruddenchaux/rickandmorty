@@ -1,8 +1,7 @@
+import { BaseEntity } from './BaseEntity';
 import { Character } from './Character';
 
-export interface Location {
-  id: number;
-  name: string;
+export interface Location extends BaseEntity {
   type: string;
   dimension: string;
   residents: Character[];

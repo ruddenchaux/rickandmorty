@@ -2,19 +2,18 @@ import { CardActions, Grid, IconButton, Typography } from '@material-ui/core';
 import { Favorite, FavoriteBorder } from '@material-ui/icons';
 import { Skeleton } from '@material-ui/lab';
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import useCardTitleEllipsisStyle from '../../hooks/useCardTitleEllipsisStyle';
+import useCardTitle from '../../hooks/useCardTitle';
 import { Location } from '../../models/Location';
-import { FavoritesState, selectFavoriteLocation, toggleFavoriteLocation } from '../../store/favorites';
+import { selectFavoriteLocation, toggleFavoriteLocation } from '../../store/favorites';
 
 export default function LocationCardTitle({ location, isLoading }: { location: Location; isLoading: boolean }) {
-  const classes = useCardTitleEllipsisStyle()();
-  const dispatch = useDispatch();
-  const isFavorite = useSelector<FavoritesState>((state) => selectFavoriteLocation(state, location?.id));
-
-  const toggleFavorite = () => {
-    dispatch(toggleFavoriteLocation(location));
-  };
+  const { classes, toggleFavorite, isFavorite } = useCardTitle<Location>({
+    entityType: 'location',
+    entity: location,
+    favoritePath: '/favorites/locations',
+    selectFavorite: selectFavoriteLocation,
+    toggleFavoriteAction: toggleFavoriteLocation
+  });
 
   if (isLoading) {
     return <Skeleton height={44} />;
