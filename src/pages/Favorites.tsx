@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react/jsx-props-no-spreading */
-import { AppBar, Tab, Tabs } from '@material-ui/core';
+import { AppBar, makeStyles, Tab, Tabs } from '@material-ui/core';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link, Route, Switch, useLocation } from 'react-router-dom';
@@ -100,7 +100,14 @@ function a11yProps(name: string) {
   };
 }
 
+const useStyles = makeStyles((theme) => ({
+  appBar: {
+    top: theme.spacing(7)
+  }
+}));
+
 export default function Favorites() {
+  const classes = useStyles();
   const location = useLocation();
   const [value, setValue] = useState(location.pathname);
   const dispatch = useDispatch();
@@ -113,7 +120,7 @@ export default function Favorites() {
 
   return (
     <>
-      <AppBar position="static" color="default">
+      <AppBar className={classes.appBar} position="absolute" color="default">
         <Tabs
           value={value}
           onChange={handleChange}
