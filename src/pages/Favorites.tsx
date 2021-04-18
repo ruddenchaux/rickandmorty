@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react/jsx-props-no-spreading */
 import { AppBar, Tab, Tabs } from '@material-ui/core';
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link, Route, Switch, useLocation } from 'react-router-dom';
 import CharacterCard from '../components/characters/CharacterCard';
@@ -102,7 +102,7 @@ function a11yProps(name: string) {
 
 export default function Favorites() {
   const location = useLocation();
-  const [value, setValue] = React.useState(location.pathname);
+  const [value, setValue] = useState(location.pathname);
   const dispatch = useDispatch();
 
   dispatch(setHeaderTitle('Favorites'));

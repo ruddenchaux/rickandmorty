@@ -2,19 +2,18 @@ import { CardActions, Grid, IconButton, Typography } from '@material-ui/core';
 import { Favorite, FavoriteBorder } from '@material-ui/icons';
 import { Skeleton } from '@material-ui/lab';
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import useCardTitleEllipsisStyle from '../../hooks/useCardTitleEllipsisStyle';
+import useCardTitle from '../../hooks/useCardTitle';
 import { Episode } from '../../models/Episode';
-import { FavoritesState, selectFavoriteEpisode, toggleFavoriteEpisode } from '../../store/favorites';
+import { selectFavoriteEpisode, toggleFavoriteEpisode } from '../../store/favorites';
 
 export default function EpisodeCardTitle({ episode, isLoading }: { episode: Episode; isLoading: boolean }) {
-  const classes = useCardTitleEllipsisStyle()();
-  const dispatch = useDispatch();
-  const isFavorite = useSelector<FavoritesState>((state) => selectFavoriteEpisode(state, episode?.id));
-
-  const toggleFavorite = () => {
-    dispatch(toggleFavoriteEpisode(episode));
-  };
+  const { classes, toggleFavorite, isFavorite } = useCardTitle<Episode>({
+    entityType: 'episode',
+    entity: episode,
+    favoritePath: '/favorites/episodes',
+    selectFavorite: selectFavoriteEpisode,
+    toggleFavoriteAction: toggleFavoriteEpisode
+  });
 
   if (isLoading) {
     return <Skeleton height={44} />;
