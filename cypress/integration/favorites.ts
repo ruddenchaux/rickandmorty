@@ -13,6 +13,43 @@ const itemsTab = [
   }
 ];
 
+function favoritesSelect(label: string, entity: string, initialVisitPath: string, skip: boolean = false) {
+  it(label, function () {
+    if (skip) {
+      this.skip();
+    }
+    // visit to the entity favorites page
+    cy.visit(initialVisitPath);
+
+    // click on info link for add new favorites item and go on entity page
+    cy.get('[data-cy="favorite-entity-path"]').click();
+
+    // click on favorite action
+    cy.get(`[data-cy=${entity}-favorite-action]`).click({ multiple: true });
+
+    // check if the action status are toggle
+    cy.get(`[data-cy=${entity}-favorite-icon]`).should('have.length', 20);
+
+    // turn back on favorites page
+    cy.go('back');
+
+    // check if the info link is not present
+    cy.get('[data-cy="favorite-entity-path"]').should('not.exist');
+
+    // check if have all favorites selected
+    cy.get(`[data-cy=${entity}-card]`).should('have.length', 20);
+
+    // click on unfavorite action
+    cy.get(`[data-cy=${entity}-favorite-action]`).click({ multiple: true });
+
+    // check if not have favorites
+    cy.get(`[data-cy=${entity}-card]`).should('not.exist');
+
+    // check if exist initial info message with link
+    cy.get('[data-cy="favorite-entity-path"]').should('exist');
+  });
+}
+
 context('Favorites', () => {
   before(() => {
     cy.visit('/favorites');
@@ -71,5 +108,11 @@ context('Favorites', () => {
           .should('satisfy', ($el) => $el[0].classList.contains('Mui-selected'));
       });
     });
+  });
+
+  describe('Select favorites', () => {
+    favoritesSelect('Characters', 'character', '/favorites');
+    favoritesSelect('Locations', 'location', '/favorites/locations', true);
+    favoritesSelect('Episodes', 'episode', '/favorites/episodes');
   });
 });
