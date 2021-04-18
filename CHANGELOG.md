@@ -1,3 +1,13 @@
+## [0.6.1](https://github.com/ruddenchaux/rickandmorty/compare/0.6.0...0.6.1) (2021-04-18)
+
+
+### Bug Fixes
+
+* **accessibility:** fixed accessibility ([a164f08](https://github.com/ruddenchaux/rickandmorty/commit/a164f085631b4aac279c6040f36e2488532c6f57))
+* **favorites:** closed snackbar on link click ([4ec5c03](https://github.com/ruddenchaux/rickandmorty/commit/4ec5c035fc2b06e4c6e82e7d81bfe9a91970e986))
+* **favorites:** fixed open fullscrenn dialog from favorites ([703be11](https://github.com/ruddenchaux/rickandmorty/commit/703be118f05524e1f6e4096b5c4894e5955a918f))
+* **layout:** fixed a layout spacing, height and scroll ([487b7dd](https://github.com/ruddenchaux/rickandmorty/commit/487b7ddb652805d58f6ab7a24699a53240b9cd01))
+
 # [0.6.0](https://github.com/ruddenchaux/rickandmorty/compare/0.5.4...0.6.0) (2021-04-18)
 
 
