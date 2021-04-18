@@ -1,3 +1,15 @@
+# [0.6.0](https://github.com/ruddenchaux/rickandmorty/compare/0.5.4...0.6.0) (2021-04-18)
+
+
+### Features
+
+* **favorites:** added a favorite action to cards title ([b36357f](https://github.com/ruddenchaux/rickandmorty/commit/b36357f4c52be4856691d95031ca449095a74439))
+* **favorites:** added favorites grids ([c8b9ff4](https://github.com/ruddenchaux/rickandmorty/commit/c8b9ff40d32ff2348ceced8c2c7ca41d230ce528))
+* **favorites:** added persistence for favorites store ([2ab7f4f](https://github.com/ruddenchaux/rickandmorty/commit/2ab7f4f58df5773e35c2d8aef15694f899774439))
+* **favorites:** added router tabs to favorites page ([0f502fe](https://github.com/ruddenchaux/rickandmorty/commit/0f502febb3d842c4a2abf9fffa27646232fa3674))
+* **favorites:** added snackbar notification on favorite action ([83a9f4d](https://github.com/ruddenchaux/rickandmorty/commit/83a9f4d6f50d68a4370ba3bfcbf730b8220ded99))
+* **favorites:** added store for handle toggle and get favorite ([6afaba0](https://github.com/ruddenchaux/rickandmorty/commit/6afaba0937fb5379a4e9810bf673815c4238eced))
+
 ## [0.5.4](https://github.com/ruddenchaux/rickandmorty/compare/0.5.3...0.5.4) (2021-04-17)
 
 
