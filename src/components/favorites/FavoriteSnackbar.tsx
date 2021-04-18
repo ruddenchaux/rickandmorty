@@ -1,18 +1,21 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import { Snackbar, Link } from '@material-ui/core';
+import { Link, Snackbar } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link as RouterLink } from 'react-router-dom';
+import { setDialogOpen } from '../../store/charactersDialog';
 import { FavoritesState, setSnackbar } from '../../store/favorites';
 
 // component for handle the snackbar message
 function SnackbarMessage({ action, entityName, entityType, favoritePath }: FavoritesState['favorites']['snackbar']) {
+  const dispatch = useDispatch();
+
   if (action === 'add') {
     return (
       <span data-cy="favorite-snackbar-message">
         {entityName} {entityType} added to the{' '}
-        <Link component={RouterLink} to={favoritePath}>
+        <Link component={RouterLink} to={favoritePath} onClick={() => dispatch(setDialogOpen(false))}>
           favorites
         </Link>
       </span>

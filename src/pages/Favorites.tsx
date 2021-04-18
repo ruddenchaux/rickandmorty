@@ -2,10 +2,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react/jsx-props-no-spreading */
 import { AppBar, makeStyles, Tab, Tabs } from '@material-ui/core';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link, Route, Switch, useLocation } from 'react-router-dom';
 import CharacterCard from '../components/characters/CharacterCard';
+import CharactersFullScreenDialog from '../components/characters/CharactersFullScreenDialog';
 import EpisodeCard from '../components/episodes/EpisodeCard';
 import FavoritesGrid from '../components/favorites/FavoritesGrid';
 import LocationCard from '../components/locations/LocationCard';
@@ -127,6 +128,10 @@ export default function Favorites() {
     setValue(newValue);
   };
 
+  useEffect(() => {
+    setValue(location.pathname);
+  }, [location]);
+
   return (
     <>
       <AppBar className={classes.appBar} position="sticky" color="default">
@@ -175,6 +180,7 @@ export default function Favorites() {
           ))}
         </Switch>
       </div>
+      <CharactersFullScreenDialog />
     </>
   );
 }
