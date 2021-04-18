@@ -109,7 +109,7 @@ context('Favorites', () => {
         );
 
         // open side menu
-        cy.get('[data-cy=button-menu]').click();
+        cy.get('[data-cy=button-menu]').click({ force: true });
 
         // check if sidebar Favorites menu item is selected
         cy.get('[data-cy="item-menu"][href="/favorites"]').should('satisfy', ($el) =>
