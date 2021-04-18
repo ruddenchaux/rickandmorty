@@ -36,19 +36,18 @@ const useStyles = (isFavorites: boolean) =>
   makeStyles((theme) => ({
     main: {
       backgroundColor: theme.palette.background.default,
-      marginTop: theme.spacing(8),
-      paddingTop: isFavorites ? theme.spacing(0) : theme.spacing(3),
-      paddingBottom: isFavorites ? theme.spacing(7) : theme.spacing(4),
+      marginTop: isFavorites ? theme.spacing(13) : theme.spacing(8),
+      paddingTop: theme.spacing(3),
+      paddingBottom: isFavorites ? theme.spacing(5) : theme.spacing(5),
 
       [theme.breakpoints.up('md')]: {
-        height: 'calc(100vh - 120px)'
+        height: `calc(100vh - 120px ${isFavorites ? '- 48px' : ''})`
       },
       [theme.breakpoints.down('sm')]: {
-        height: 'calc(100vh - 56px - 120px)'
+        height: `calc(100vh - 176px ${isFavorites ? '- 48px' : ''})`
       },
       [theme.breakpoints.down('xs')]: {
-        marginTop: theme.spacing(7),
-        paddingBottom: isFavorites ? theme.spacing(8) : theme.spacing(5)
+        marginTop: isFavorites ? theme.spacing(13) : theme.spacing(7)
       },
       overflow: 'auto'
     }
