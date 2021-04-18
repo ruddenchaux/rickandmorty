@@ -15,7 +15,14 @@ function SnackbarMessage({ action, entityName, entityType, favoritePath }: Favor
     return (
       <span data-cy="favorite-snackbar-message">
         {entityName} {entityType} added to the{' '}
-        <Link component={RouterLink} to={favoritePath} onClick={() => dispatch(setDialogOpen(false))}>
+        <Link
+          component={RouterLink}
+          to={favoritePath}
+          onClick={() => {
+            dispatch(setDialogOpen(false));
+            dispatch(setSnackbar({ open: false }));
+          }}
+        >
           favorites
         </Link>
       </span>
