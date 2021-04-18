@@ -1,7 +1,7 @@
 import itemsMenu from '../../src/utils/itemsMenu';
 
-const openMenu = () => cy.get('[data-cy=button-menu]').click();
-const closeMenu = () => cy.get('body').click();
+const openMenu = () => cy.get('[data-cy=button-menu]').click({ force: true });
+const closeMenu = () => cy.get('body').click({ force: true });
 
 context('Layout', () => {
   before(() => {
