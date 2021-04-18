@@ -33,7 +33,7 @@ export default function CharacterCardLastLocation({
       <Typography variant="subtitle2" component="label" color="textSecondary">
         Last known location:
       </Typography>
-      <Typography variant="subtitle1" data-cy="character-last-known-position">
+      <Typography variant="subtitle1" component="div" data-cy="character-last-known-position">
         {character.location.name}
       </Typography>
     </div>

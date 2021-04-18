@@ -30,7 +30,7 @@ export default function CharacterCardTitle({ character, isLoading }: { character
         <Typography className={classes.ellipsis} component="h2" variant="h5" data-cy="character-name">
           {character.name}
         </Typography>
-        <Typography variant="subtitle2" data-cy="character-status-species">
+        <Typography variant="subtitle2" component="span" data-cy="character-status-species">
           {character.status} - {character.species}
         </Typography>
       </Grid>

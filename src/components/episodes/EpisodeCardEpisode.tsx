@@ -27,7 +27,7 @@ export default function EpisodeCardEpisode({ episode, isLoading }: { episode: Ep
       <Typography variant="subtitle2" component="label" color="textSecondary">
         Episode:
       </Typography>
-      <Typography variant="subtitle1" data-cy="episode-episode">
+      <Typography variant="subtitle1" component="div" data-cy="episode-episode">
         {episode.episode}
       </Typography>
     </div>

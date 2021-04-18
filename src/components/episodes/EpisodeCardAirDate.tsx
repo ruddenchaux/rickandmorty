@@ -27,7 +27,7 @@ export default function EpisodeCardAirDate({ episode, isLoading }: { episode: Ep
       <Typography variant="subtitle2" component="label" color="textSecondary">
         Air date:
       </Typography>
-      <Typography variant="subtitle1" data-cy="episode-air-date">
+      <Typography variant="subtitle1" component="div" data-cy="episode-air-date">
         {episode.air_date}
       </Typography>
     </div>

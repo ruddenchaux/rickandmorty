@@ -61,11 +61,17 @@ export default function CharactersFullScreenDialog() {
       scroll="paper"
       open={open || false}
       onClose={handleClose}
+      role="presentation"
       TransitionComponent={Transition as React.ComponentType<TransitionProps>}
     >
       <AppBar className={classes.appBar}>
         <Toolbar>
-          <Typography data-cy="characters-fullscreen-dialog-title" variant="h6" className={classes.title}>
+          <Typography
+            data-cy="characters-fullscreen-dialog-title"
+            variant="h6"
+            component="span"
+            className={classes.title}
+          >
             {title}
           </Typography>
           <IconButton

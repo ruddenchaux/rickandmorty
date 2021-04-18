@@ -33,7 +33,7 @@ export default function CharacterCardFirstSeenIn({
       <Typography variant="subtitle2" component="label" color="textSecondary">
         First seen in:
       </Typography>
-      <Typography variant="subtitle1" data-cy="character-first-seen-in">
+      <Typography variant="subtitle1" component="div" data-cy="character-first-seen-in">
         {character.episode[0].name}
       </Typography>
     </div>
