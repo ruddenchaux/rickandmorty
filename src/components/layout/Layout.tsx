@@ -35,21 +35,13 @@ const routes = [
 const useStyles = (isFavorites: boolean) =>
   makeStyles((theme) => ({
     main: {
-      backgroundColor: theme.palette.background.default,
-      marginTop: isFavorites ? theme.spacing(13) : theme.spacing(8),
-      paddingTop: theme.spacing(3),
-      paddingBottom: isFavorites ? theme.spacing(5) : theme.spacing(5),
+      paddingTop: isFavorites ? 0 : theme.spacing(2),
+      paddingBottom: theme.spacing(2),
 
-      [theme.breakpoints.up('md')]: {
-        height: `calc(100vh - 120px ${isFavorites ? '- 48px' : ''})`
-      },
-      [theme.breakpoints.down('sm')]: {
-        height: `calc(100vh - 176px ${isFavorites ? '- 48px' : ''})`
-      },
       [theme.breakpoints.down('xs')]: {
-        marginTop: isFavorites ? theme.spacing(13) : theme.spacing(7)
-      },
-      overflow: 'auto'
+        paddingTop: theme.spacing(0),
+        paddingBottom: theme.spacing(7)
+      }
     }
   }));
 

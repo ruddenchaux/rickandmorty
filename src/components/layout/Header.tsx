@@ -29,7 +29,7 @@ export default function Header({ openMenu }: { openMenu: React.Dispatch<React.Se
   const headerTitle = useSelector<HeaderTitleState>((state) => state.headerTitle.title);
 
   return (
-    <AppBar className={classes.appBar} position="fixed">
+    <AppBar className={classes.appBar} position="sticky">
       <Toolbar>
         <NavLink to="/" aria-label="Rick and Morty">
           <Logo />

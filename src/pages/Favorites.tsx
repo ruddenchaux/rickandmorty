@@ -102,7 +102,16 @@ function a11yProps(name: string) {
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
-    top: theme.spacing(7)
+    top: theme.spacing(8),
+    [theme.breakpoints.down('xs')]: {
+      top: theme.spacing(7)
+    }
+  },
+  content: {
+    paddingTop: theme.spacing(2),
+    [theme.breakpoints.down('xs')]: {
+      paddingTop: theme.spacing(0)
+    }
   }
 }));
 
@@ -120,7 +129,7 @@ export default function Favorites() {
 
   return (
     <>
-      <AppBar className={classes.appBar} position="absolute" color="default">
+      <AppBar className={classes.appBar} position="sticky" color="default">
         <Tabs
           value={value}
           onChange={handleChange}
@@ -144,26 +153,28 @@ export default function Favorites() {
         </Tabs>
       </AppBar>
 
-      <Switch>
-        {/* loop a route tabs */}
-        {routesFavoritesTabs.map((favoriteTab) => (
-          <Route
-            key={favoriteTab.path}
-            path={favoriteTab.path}
-            exact={favoriteTab.exact}
-            render={() => (
-              <TabPanel name={favoriteTab.name} value={value}>
-                <FavoritesGrid
-                  CardComponent={favoriteTab.cardComponent}
-                  favoriteStateKey={favoriteTab.favoriteStateKey}
-                  label={favoriteTab.label}
-                  entityPath={favoriteTab.entityPath}
-                />
-              </TabPanel>
-            )}
-          />
-        ))}
-      </Switch>
+      <div className={classes.content}>
+        <Switch>
+          {/* loop a route tabs */}
+          {routesFavoritesTabs.map((favoriteTab) => (
+            <Route
+              key={favoriteTab.path}
+              path={favoriteTab.path}
+              exact={favoriteTab.exact}
+              render={() => (
+                <TabPanel name={favoriteTab.name} value={value}>
+                  <FavoritesGrid
+                    CardComponent={favoriteTab.cardComponent}
+                    favoriteStateKey={favoriteTab.favoriteStateKey}
+                    label={favoriteTab.label}
+                    entityPath={favoriteTab.entityPath}
+                  />
+                </TabPanel>
+              )}
+            />
+          ))}
+        </Switch>
+      </div>
     </>
   );
 }
