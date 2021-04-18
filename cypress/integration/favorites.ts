@@ -50,6 +50,26 @@ function favoritesSelect(label: string, entity: string, initialVisitPath: string
   });
 }
 
+function snackbarNotification(label: string, entity: string, initialVisitPath: string, skip: boolean = false) {
+  it(label, function () {
+    if (skip) {
+      this.skip();
+    }
+    // visit to the entity favorites page
+    cy.visit(initialVisitPath);
+
+    // click on favorite action
+    cy.get(`[data-cy=${entity}-favorite-action]`).first().click();
+
+    cy.get('[data-cy=favorite-snackbar-message]').contains('added');
+
+    // click on unfavorite action
+    cy.get(`[data-cy=${entity}-favorite-action]`).first().click();
+
+    cy.get('[data-cy=favorite-snackbar-message]').contains('removed');
+  });
+}
+
 context('Favorites', () => {
   before(() => {
     cy.visit('/favorites');
@@ -114,5 +134,11 @@ context('Favorites', () => {
     favoritesSelect('Characters', 'character', '/favorites');
     favoritesSelect('Locations', 'location', '/favorites/locations', true);
     favoritesSelect('Episodes', 'episode', '/favorites/episodes');
+  });
+
+  describe('Snackbar notification', () => {
+    snackbarNotification('Characters', 'character', '/');
+    snackbarNotification('Locations', 'location', '/locations', true);
+    snackbarNotification('Episodes', 'episode', '/episodes');
   });
 });
