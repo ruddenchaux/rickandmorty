@@ -13,7 +13,7 @@ export default function Characters() {
 
   return (
     <ItemsGrid<Character, CharactersWrapperResponse>
-      ComponentCard={CharacterCard}
+      CardComponent={CharacterCard}
       useGetAllQuery={useGetAllQuery}
       xs={12}
       sm={12}

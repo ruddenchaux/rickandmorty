@@ -14,7 +14,7 @@ export default function Locations() {
   return (
     <>
       <ItemsGrid<Location, LocationsWrapperResponse>
-        ComponentCard={LocationCard}
+        CardComponent={LocationCard}
         useGetAllQuery={useGetAllQuery}
         xs={12}
         sm={12}

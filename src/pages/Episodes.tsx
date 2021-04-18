@@ -15,7 +15,7 @@ export default function Episodes() {
   return (
     <>
       <ItemsGrid<Episode, EpisodesWrapperResponse>
-        ComponentCard={EpisodeCard}
+        CardComponent={EpisodeCard}
         useGetAllQuery={useGetAllQuery}
         xs={12}
         sm={12}

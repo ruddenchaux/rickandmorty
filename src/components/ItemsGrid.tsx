@@ -5,7 +5,7 @@ import useGrid, { UseGridOptions } from '../hooks/useGrid';
 import useGridStyle from '../hooks/useGridStyle';
 
 export default function ItemsGrid<T, K>({
-  ComponentCard,
+  CardComponent,
   useGetAllQuery,
   xs,
   sm,
@@ -14,7 +14,7 @@ export default function ItemsGrid<T, K>({
   xl
 }: {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  ComponentCard: React.ComponentType<any>;
+  CardComponent: React.ComponentType<any>;
   useGetAllQuery: UseGridOptions<T, K>['useGetAllQuery'];
   xs: GridSize;
   sm: GridSize;
@@ -57,7 +57,7 @@ export default function ItemsGrid<T, K>({
           (item: T, index) => (
             // eslint-disable-next-line react/no-array-index-key
             <Grid item key={index} xs={xs} sm={sm} md={md} lg={lg} xl={xl}>
-              <ComponentCard
+              <CardComponent
                 // loading only the new cards
                 isLoading={(isFetching || isLoading) && index >= (page - 1) * pageSize}
                 item={item}
