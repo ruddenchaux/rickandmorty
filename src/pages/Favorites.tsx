@@ -1,27 +1,102 @@
+/* eslint-disable @typescript-eslint/ban-types */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react/jsx-props-no-spreading */
 import { AppBar, Tab, Tabs } from '@material-ui/core';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Link, Route, Switch, useLocation } from 'react-router-dom';
+import CharacterCard from '../components/characters/CharacterCard';
+import EpisodeCard from '../components/episodes/EpisodeCard';
+import FavoritesGrid from '../components/favorites/FavoritesGrid';
+import LocationCard from '../components/locations/LocationCard';
 import { setHeaderTitle } from '../store/headerTitle';
 
-function TabPanel({ children, label, value }: { children: React.ReactNode; label: string; value: string }) {
+interface RouterFavoriteTabs {
+  /**
+   * Name of the tabs useful for accessibility
+   */
+  name: string;
+
+  /**
+   * Label of the tab shown at the user
+   */
+  label: string;
+
+  /**
+   * Path of the tab
+   */
+  path: string;
+
+  /**
+   * Flag for handle router match
+   */
+  exact?: boolean;
+
+  /**
+   * The card component used in the favorites grid
+   */
+  cardComponent: React.ComponentType<any>;
+
+  /**
+   * The favorite state key
+   */
+  favoriteStateKey: 'favoritesCharacters' | 'favoritesEpisodes' | 'favoritesLocations';
+  // favoriteStateKey: string;
+
+  /**
+   * The path of the entity
+   */
+  entityPath: string;
+}
+
+// routes tabs config
+const routesFavoritesTabs: RouterFavoriteTabs[] = [
+  {
+    name: 'favorites',
+    label: 'Characters',
+    path: '/favorites',
+    exact: true,
+    cardComponent: CharacterCard,
+    favoriteStateKey: 'favoritesCharacters',
+    entityPath: '/'
+  },
+  {
+    name: 'locations',
+    label: 'Locations',
+    path: '/favorites/locations',
+    cardComponent: LocationCard,
+    favoriteStateKey: 'favoritesLocations',
+    entityPath: '/locations'
+  },
+  {
+    name: 'episodes',
+    label: 'Episodes',
+    path: '/favorites/episodes',
+    cardComponent: EpisodeCard,
+    favoriteStateKey: 'favoritesEpisodes',
+    entityPath: '/episodes'
+  }
+];
+
+// tab content component wrapper
+function TabPanel({ children, name, value }: { children: React.ReactNode; name: string; value: string }) {
   return (
     <div
       role="tabpanel"
-      hidden={!value.includes(label)}
-      id={`full-width-tabpanel-${label}`}
-      aria-labelledby={`full-width-tab-${label}`}
+      hidden={!value.includes(name)}
+      id={`full-width-tabpanel-${name}`}
+      aria-labelledby={`full-width-tab-${name}`}
     >
-      {value.includes(label) && children}
+      {value.includes(name) && children}
     </div>
   );
 }
 
-function a11yProps(label: string) {
+// accessibility props for the tab
+function a11yProps(name: string) {
   return {
-    id: `full-width-tab-${label}`,
-    'aria-controls': `full-width-tabpanel-${label}`
+    id: `full-width-tab-${name}`,
+    'aria-controls': `full-width-tabpanel-${name}`
   };
 }
 
@@ -32,7 +107,6 @@ export default function Favorites() {
 
   dispatch(setHeaderTitle('Favorites'));
 
-  // eslint-disable-next-line @typescript-eslint/ban-types
   const handleChange = (_event: React.ChangeEvent<{}>, newValue: string) => {
     setValue(newValue);
   };
@@ -48,49 +122,40 @@ export default function Favorites() {
           variant="fullWidth"
           aria-label="favorites tabs"
         >
-          <Tab
-            label="Characters"
-            {...a11yProps('favorites')}
-            component={Link}
-            value="/favorites"
-            to="/favorites"
-            data-cy="favorites-link"
-          />
-          <Tab
-            label="Locations"
-            {...a11yProps('locations')}
-            component={Link}
-            value="/favorites/locations"
-            to="/favorites/locations"
-            data-cy="favorites-link"
-          />
-          <Tab
-            label="Episodes"
-            {...a11yProps('episodes')}
-            component={Link}
-            value="/favorites/episodes"
-            to="/favorites/episodes"
-            data-cy="favorites-link"
-          />
+          {/* loop a tabs */}
+          {routesFavoritesTabs.map((favoriteTab) => (
+            <Tab
+              key={favoriteTab.name}
+              label={favoriteTab.label}
+              {...a11yProps(favoriteTab.name)}
+              component={Link}
+              value={favoriteTab.path}
+              to={favoriteTab.path}
+              data-cy="favorites-link"
+            />
+          ))}
         </Tabs>
       </AppBar>
 
       <Switch>
-        <Route exact path="/favorites">
-          <TabPanel label="favorites" value={value}>
-            <h1>Characters</h1>
-          </TabPanel>
-        </Route>
-        <Route path="/favorites/locations">
-          <TabPanel label="locations" value={value}>
-            <h1>Locations</h1>
-          </TabPanel>
-        </Route>
-        <Route path="/favorites/episodes">
-          <TabPanel label="episodes" value={value}>
-            <h1>Episodes</h1>
-          </TabPanel>
-        </Route>
+        {/* loop a route tabs */}
+        {routesFavoritesTabs.map((favoriteTab) => (
+          <Route
+            key={favoriteTab.path}
+            path={favoriteTab.path}
+            exact={favoriteTab.exact}
+            render={() => (
+              <TabPanel name={favoriteTab.name} value={value}>
+                <FavoritesGrid
+                  CardComponent={favoriteTab.cardComponent}
+                  favoriteStateKey={favoriteTab.favoriteStateKey}
+                  label={favoriteTab.label}
+                  entityPath={favoriteTab.entityPath}
+                />
+              </TabPanel>
+            )}
+          />
+        ))}
       </Switch>
     </>
   );
