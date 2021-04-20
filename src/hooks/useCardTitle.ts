@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { BaseEntity } from '../models/BaseEntity';
 import { FavoritesState, setSnackbar } from '../store/favorites';
+import { useFavoritesSelector } from './store';
 import useCardTitleEllipsisStyle from './useCardTitleEllipsisStyle';
 
 /**
@@ -17,7 +18,7 @@ export default <T extends BaseEntity>({
   entityType: string;
   entity: T;
   favoritePath: string;
-  selectFavorite: (state: FavoritesState, props: any) => boolean;
+  selectFavorite: (state: { favorites: FavoritesState }, props: any) => boolean;
   toggleFavoriteAction: (
     payload: any
   ) => {
@@ -27,7 +28,7 @@ export default <T extends BaseEntity>({
 }) => {
   const classes = useCardTitleEllipsisStyle()();
   const dispatch = useDispatch();
-  const isFavorite = useSelector<FavoritesState>((state) => selectFavorite(state, entity?.id));
+  const isFavorite = useFavoritesSelector((state) => selectFavorite(state, entity?.id));
 
   const toggleFavorite = () => {
     dispatch(toggleFavoriteAction(entity));

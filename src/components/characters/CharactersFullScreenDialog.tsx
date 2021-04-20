@@ -13,10 +13,11 @@ import {
 import { TransitionProps } from '@material-ui/core/transitions';
 import CloseIcon from '@material-ui/icons/Close';
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { useCharactersDialogSelector } from '../../hooks/store';
 import useGridStyle from '../../hooks/useGridStyle';
 import { Character } from '../../models/Character';
-import { CharactersDialogState, setDialogOpen } from '../../store/charactersDialog';
+import { setDialogOpen } from '../../store/charactersDialog';
 import CharacterCard from './CharacterCard';
 
 // component style
@@ -44,10 +45,7 @@ const Transition = React.forwardRef(function Transition(
 export default function CharactersFullScreenDialog() {
   const classes = useStyles();
   const gridClasses = useGridStyle();
-
-  const open = useSelector<CharactersDialogState, boolean>((state) => state.charactersDialog.open);
-  const title = useSelector<CharactersDialogState, string>((state) => state.charactersDialog.title);
-  const characters = useSelector<CharactersDialogState, Character[]>((state) => state.charactersDialog.characters);
+  const { open, title, characters } = useCharactersDialogSelector((state) => state.charactersDialog);
 
   const dispatch = useDispatch();
 

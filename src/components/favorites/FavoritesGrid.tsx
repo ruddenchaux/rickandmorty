@@ -1,13 +1,12 @@
 import { Container, Grid, Link } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
 import React from 'react';
-import { useSelector } from 'react-redux';
 import { Link as RouterLink } from 'react-router-dom';
+import { useFavoritesSelector } from '../../hooks/store';
 import useGridStyle from '../../hooks/useGridStyle';
 import { Character } from '../../models/Character';
 import { Episode } from '../../models/Episode';
 import { Location } from '../../models/Location';
-import { FavoritesState } from '../../store/favorites';
 
 declare type T = Character | Location | Episode;
 
@@ -24,7 +23,7 @@ export default function FavoritesGrid({
   entityPath: string;
 }) {
   const gridClasses = useGridStyle();
-  const favoritesItems = useSelector<FavoritesState, T[]>((state) => state.favorites[favoriteStateKey]);
+  const favoritesItems = useFavoritesSelector((state) => state.favorites[favoriteStateKey]);
 
   if (!favoritesItems.length) {
     return (
