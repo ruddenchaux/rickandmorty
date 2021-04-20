@@ -1,5 +1,6 @@
 import { Card, CardContent, Grid, makeStyles } from '@material-ui/core';
 import React from 'react';
+import useCard from '../../hooks/useCard';
 import { Episode } from '../../models/Episode';
 import CharactersAvatars from '../characters/CharactersAvatars';
 import EpisodeCardAirDate from './EpisodeCardAirDate';
@@ -10,10 +11,12 @@ import EpisodeCardTitle from './EpisodeCardTitle';
 const useStyles = makeStyles((theme) => ({
   card: {
     [theme.breakpoints.up('sm')]: {
-      display: 'flex'
+      display: 'flex',
+      height: '234px'
     },
     [theme.breakpoints.down('xs')]: {
-      display: 'block'
+      display: 'block',
+      height: '430.3px'
     }
   },
   cardDetails: {
@@ -24,34 +27,39 @@ const useStyles = makeStyles((theme) => ({
 export default function EpisodeCard({ item, isLoading }: { item: Episode; isLoading: boolean }) {
   const classes = useStyles();
 
+  // hook for handle card lazy (only when the card enter in the viewport)
+  const [containerRef, isVisible] = useCard();
+
   return (
-    <Card className={classes.card} data-cy="episode-card">
-      <CardContent className={classes.cardDetails}>
-        <EpisodeCardTitle isLoading={isLoading} episode={item} />
+    <Card ref={containerRef as React.MutableRefObject<HTMLElement>} className={classes.card} data-cy="episode-card">
+      {isVisible ? (
+        <CardContent className={classes.cardDetails}>
+          <EpisodeCardTitle isLoading={isLoading} episode={item} />
 
-        <Grid container>
-          <Grid item xs={12} sm={5} md={5} lg={5} xl={5}>
-            <Grid container>
-              <Grid item xs={6} sm={12}>
-                <EpisodeCardEpisode isLoading={isLoading} episode={item} />
-              </Grid>
+          <Grid container>
+            <Grid item xs={12} sm={5} md={5} lg={5} xl={5}>
+              <Grid container>
+                <Grid item xs={6} sm={12}>
+                  <EpisodeCardEpisode isLoading={isLoading} episode={item} />
+                </Grid>
 
-              <Grid item xs={6} sm={12}>
-                <EpisodeCardAirDate isLoading={isLoading} episode={item} />
+                <Grid item xs={6} sm={12}>
+                  <EpisodeCardAirDate isLoading={isLoading} episode={item} />
+                </Grid>
               </Grid>
             </Grid>
-          </Grid>
 
-          <Grid item xs={12} sm={7} md={7} lg={7} xl={7}>
-            <CharactersAvatars
-              label="Characters"
-              characters={item?.characters}
-              dialogTitle={`Characters in ${item?.name} episode`}
-              isLoading={isLoading}
-            />
+            <Grid item xs={12} sm={7} md={7} lg={7} xl={7}>
+              <CharactersAvatars
+                label="Characters"
+                characters={item?.characters}
+                dialogTitle={`Characters in ${item?.name} episode`}
+                isLoading={isLoading}
+              />
+            </Grid>
           </Grid>
-        </Grid>
-      </CardContent>
+        </CardContent>
+      ) : null}
     </Card>
   );
 }
