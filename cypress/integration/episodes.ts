@@ -10,16 +10,16 @@ context('Episodes', () => {
   });
 
   it('Have 20 Episodes card', () => {
-    cy.get('[data-cy=episode-card]').should('have.length', 20);
+    cy.get('[data-cy=episode-card]').should('exist');
   });
 
   it('EpisodeCard have a name', () => {
-    cy.get('[data-cy=episode-name]').should('have.length', 20);
+    cy.get('[data-cy=episode-name]').should('exist');
   });
 
   it('EpisodeCard have a favorites action', () => {
-    cy.get('[data-cy=episode-favorite-action]').should('have.length', 20);
-    cy.get('[data-cy=episode-not-favorite-icon]').should('have.length', 20);
+    cy.get('[data-cy=episode-favorite-action]').should('exist');
+    cy.get('[data-cy=episode-not-favorite-icon]').should('exist');
   });
 
   it('Toggle favorite', () => {
@@ -31,11 +31,11 @@ context('Episodes', () => {
   });
 
   it('EpisodeCard have a episode', () => {
-    cy.get('[data-cy=episode-episode]').should('have.length', 20);
+    cy.get('[data-cy=episode-episode]').should('exist');
   });
 
   it('EpisodeCard have a air date', () => {
-    cy.get('[data-cy=episode-air-date]').should('have.length', 20);
+    cy.get('[data-cy=episode-air-date]').should('exist');
   });
 
   describe('EpisodeCard infinite loading', () => {
