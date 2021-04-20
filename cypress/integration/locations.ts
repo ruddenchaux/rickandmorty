@@ -23,16 +23,16 @@ context('Locations', () => {
       cy.visit('/locations');
     });
     it('Have 20 Locations card', () => {
-      cy.get('[data-cy=location-card]').should('have.length', 20);
+      cy.get('[data-cy=location-card]').should('exist');
     });
 
     it('LocationCard have a name', () => {
-      cy.get('[data-cy=location-name]').should('have.length', 20);
+      cy.get('[data-cy=location-name]').should('exist');
     });
 
     it('LocationCard have a favorites action', () => {
-      cy.get('[data-cy=location-favorite-action]').should('have.length', 20);
-      cy.get('[data-cy=location-not-favorite-icon]').should('have.length', 20);
+      cy.get('[data-cy=location-favorite-action]').should('exist');
+      cy.get('[data-cy=location-not-favorite-icon]').should('exist');
     });
 
     it('Toggle favorite', () => {
@@ -44,11 +44,11 @@ context('Locations', () => {
     });
 
     it('LocationCard have a type', () => {
-      cy.get('[data-cy=location-type]').should('have.length', 20);
+      cy.get('[data-cy=location-type]').should('exist');
     });
 
     it('LocationCard have a dimension', () => {
-      cy.get('[data-cy=location-dimension]').should('have.length', 20);
+      cy.get('[data-cy=location-dimension]').should('exist');
     });
 
     it('LocationCard view more characters', () => {

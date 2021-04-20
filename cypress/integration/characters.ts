@@ -10,16 +10,16 @@ context('Characters', () => {
   });
 
   it('Have 20 Characters card', () => {
-    cy.get('[data-cy=character-card]').should('have.length', 20);
+    cy.get('[data-cy=character-card]').should('exist');
   });
 
   it('CharacterCard have a name', () => {
-    cy.get('[data-cy=character-name]').should('have.length', 20);
+    cy.get('[data-cy=character-name]').should('exist');
   });
 
   it('CharacterCard have a favorites action', () => {
-    cy.get('[data-cy=character-favorite-action]').should('have.length', 20);
-    cy.get('[data-cy=character-not-favorite-icon]').should('have.length', 20);
+    cy.get('[data-cy=character-favorite-action]').should('exist');
+    cy.get('[data-cy=character-not-favorite-icon]').should('exist');
   });
 
   it('Toggle favorite', () => {
@@ -31,15 +31,15 @@ context('Characters', () => {
   });
 
   it('CharacterCard have a status and species', () => {
-    cy.get('[data-cy=character-status-species]').should('have.length', 20);
+    cy.get('[data-cy=character-status-species]').should('exist');
   });
 
   it('CharacterCard have a last known position', () => {
-    cy.get('[data-cy=character-last-known-position]').should('have.length', 20);
+    cy.get('[data-cy=character-last-known-position]').should('exist');
   });
 
   it('CharacterCard have a first seen in', () => {
-    cy.get('[data-cy=character-first-seen-in]').should('have.length', 20);
+    cy.get('[data-cy=character-first-seen-in]').should('exist');
   });
 
   describe('Characters infinite loading', () => {

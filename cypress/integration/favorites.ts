@@ -25,10 +25,10 @@ function favoritesSelect(label: string, entity: string, initialVisitPath: string
     cy.get('[data-cy="favorite-entity-path"]').click();
 
     // click on favorite action
-    cy.get(`[data-cy=${entity}-favorite-action]`).click({ multiple: true });
+    cy.get(`[data-cy=${entity}-favorite-action]`).first().click();
 
     // check if the action status are toggle
-    cy.get(`[data-cy=${entity}-favorite-icon]`).should('have.length', 20);
+    cy.get(`[data-cy=${entity}-favorite-icon]`).should('exist');
 
     // turn back on favorites page
     cy.go('back');
@@ -37,10 +37,10 @@ function favoritesSelect(label: string, entity: string, initialVisitPath: string
     cy.get('[data-cy="favorite-entity-path"]').should('not.exist');
 
     // check if have all favorites selected
-    cy.get(`[data-cy=${entity}-card]`).should('have.length', 20);
+    cy.get(`[data-cy=${entity}-card]`).should('exist');
 
     // click on unfavorite action
-    cy.get(`[data-cy=${entity}-favorite-action]`).click({ multiple: true });
+    cy.get(`[data-cy=${entity}-favorite-action]`).first().click();
 
     // check if not have favorites
     cy.get(`[data-cy=${entity}-card]`).should('not.exist');
