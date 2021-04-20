@@ -46,7 +46,7 @@ export default <T, K>({ pageSize, startPage, useGetAllQuery }: UseGridOptions<T,
   // hook for handle infinite loading
   const [containerRef, loadMore] = useIntersectionObserver({
     root: null,
-    rootMargin: '0px',
+    rootMargin: '600px',
     threshold: 1.0
   });
 
