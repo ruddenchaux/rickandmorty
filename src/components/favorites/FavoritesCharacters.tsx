@@ -1,14 +1,13 @@
 import { Container, Grid } from '@material-ui/core';
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useFavoritesSelector } from '../../hooks/store';
 import useGridStyle from '../../hooks/useGridStyle';
 import { Character } from '../../models/Character';
-import { FavoritesState } from '../../store/favorites';
 import CharacterCard from '../characters/CharacterCard';
 
 export default function FavoritesCharacters() {
   const gridClasses = useGridStyle();
-  const favoritesCharacters = useSelector<FavoritesState, Character[]>((state) => state.favorites.favoritesCharacters);
+  const favoritesCharacters = useFavoritesSelector((state) => state.favorites.favoritesCharacters);
 
   return (
     <Container className={gridClasses.cardGrid} maxWidth="xl">

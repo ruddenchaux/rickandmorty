@@ -1,59 +1,70 @@
 /* eslint-disable no-param-reassign */
-import { createSelector, createSlice } from '@reduxjs/toolkit';
+import { createSelector, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { BaseEntity } from '../models/BaseEntity';
 import { Character } from '../models/Character';
 import { Episode } from '../models/Episode';
 import { Location } from '../models/Location';
 
 export interface FavoritesState {
-  favorites: {
+  /**
+   * array of favorites Characters
+   */
+  favoritesCharacters: Character[];
+
+  /**
+   * array of favorites Episodes
+   */
+  favoritesEpisodes: Episode[];
+
+  /**
+   * array of favorites Locations
+   */
+  favoritesLocations: Location[];
+
+  /**
+   * state of the favorite snackbar
+   */
+  snackbar: {
     /**
-     * array of favorites Characters
+     * indicate if open the favorite snackbar
      */
-    favoritesCharacters: Character[];
+    open: boolean;
 
     /**
-     * array of favorites Episodes
+     * indicate if show add or remove favorite message
      */
-    favoritesEpisodes: Episode[];
+    action: 'add' | 'remove' | '';
 
     /**
-     * array of favorites Locations
+     * the name of the item added to the favorite (can be the name
+     * of the character or location or episode)
      */
-    favoritesLocations: Location[];
+    entityName: string;
 
     /**
-     * state of the favorite snackbar
+     * Character or Location or Episode model
      */
-    snackbar: {
-      /**
-       * indicate if open the favorite snackbar
-       */
-      open: boolean;
+    entityType: string;
 
-      /**
-       * indicate if show add or remove favorite message
-       */
-      action: 'add' | 'remove';
-
-      /**
-       * the name of the item added to the favorite (can be the name
-       * of the character or location or episode)
-       */
-      entityName: string;
-
-      /**
-       * Character or Location or Episode model
-       */
-      entityType: string;
-
-      /**
-       * Router path of the favorite page
-       */
-      favoritePath: string;
-    };
+    /**
+     * Router path of the favorite page
+     */
+    favoritePath: string;
   };
 }
+
+const initialState: FavoritesState = {
+  favoritesCharacters: [],
+  favoritesEpisodes: [],
+  favoritesLocations: [],
+  snackbar: {
+    open: false,
+    action: '',
+    entityName: '',
+    entityType: '',
+    favoritePath: ''
+  }
+};
 
 /**
  * Check if a item exist on items array
@@ -81,57 +92,46 @@ const toggleFavoriteReducer = <T extends BaseEntity>(items: T[], item: T) => {
 
 export const favoritesSlice = createSlice({
   name: 'favorites',
-  initialState: {
-    favoritesCharacters: [] as Character[],
-    favoritesEpisodes: [] as Episode[],
-    favoritesLocations: [] as Location[],
-    snackbar: {
-      open: false,
-      action: '',
-      entityName: '',
-      entityType: '',
-      favoritePath: ''
-    }
-  },
+  initialState,
   reducers: {
-    toggleFavoriteCharacter: (state, action) => {
+    toggleFavoriteCharacter: (state: FavoritesState, action: PayloadAction<Character>) => {
       state.favoritesCharacters = toggleFavoriteReducer(state.favoritesCharacters, action.payload);
     },
-    toggleFavoriteEpisode: (state, action) => {
+    toggleFavoriteEpisode: (state: FavoritesState, action: PayloadAction<Episode>) => {
       state.favoritesEpisodes = toggleFavoriteReducer(state.favoritesEpisodes, action.payload);
     },
-    toggleFavoriteLocation: (state, action) => {
+    toggleFavoriteLocation: (state: FavoritesState, action: PayloadAction<Location>) => {
       state.favoritesLocations = toggleFavoriteReducer(state.favoritesLocations, action.payload);
     },
-    setSnackbar: (state, action) => {
-      state.snackbar.open = action.payload.open;
-      state.snackbar.action = action.payload.action;
-      state.snackbar.entityName = action.payload.entityName;
-      state.snackbar.entityType = action.payload.entityType;
-      state.snackbar.favoritePath = action.payload.favoritePath;
+    setSnackbar: (state: FavoritesState, action: PayloadAction<Partial<FavoritesState['snackbar']>>) => {
+      state.snackbar.open = action.payload.open || initialState.snackbar.open;
+      state.snackbar.action = action.payload.action || initialState.snackbar.action;
+      state.snackbar.entityName = action.payload.entityName || initialState.snackbar.entityName;
+      state.snackbar.entityType = action.payload.entityType || initialState.snackbar.entityType;
+      state.snackbar.favoritePath = action.payload.favoritePath || initialState.snackbar.favoritePath;
     }
   }
 });
 
-const idSelector = (_state: FavoritesState, id: number) => id;
+const idSelector = (_state: { favorites: FavoritesState }, id: number) => id;
 
 // selector for character selector by id
 export const selectFavoriteCharacter = createSelector(
-  (state: FavoritesState) => state.favorites.favoritesCharacters,
+  (state: { favorites: FavoritesState }) => state.favorites.favoritesCharacters,
   idSelector,
   existFavorite
 );
 
 // selector for episode selector by id
 export const selectFavoriteEpisode = createSelector(
-  (state: FavoritesState) => state.favorites.favoritesEpisodes,
+  (state: { favorites: FavoritesState }) => state.favorites.favoritesEpisodes,
   idSelector,
   existFavorite
 );
 
 // selector for location selector by id
 export const selectFavoriteLocation = createSelector(
-  (state: FavoritesState) => state.favorites.favoritesLocations,
+  (state: { favorites: FavoritesState }) => state.favorites.favoritesLocations,
   idSelector,
   existFavorite
 );

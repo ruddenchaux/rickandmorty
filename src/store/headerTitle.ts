@@ -1,19 +1,18 @@
 /* eslint-disable no-param-reassign */
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export interface HeaderTitleState {
-  headerTitle: {
-    title: string;
-  };
+  title: string;
 }
 
+const initialState: HeaderTitleState = {
+  title: ''
+};
 export const headerTitleSlice = createSlice({
   name: 'headerTitle',
-  initialState: {
-    title: ''
-  },
+  initialState,
   reducers: {
-    setHeaderTitle: (state, action) => {
+    setHeaderTitle: (state: HeaderTitleState, action: PayloadAction<string>) => {
       state.title = action.payload;
     }
   }

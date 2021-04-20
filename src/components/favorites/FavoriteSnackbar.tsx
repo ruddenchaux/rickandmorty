@@ -2,13 +2,14 @@
 import { Link, Snackbar } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Link as RouterLink } from 'react-router-dom';
+import { useFavoritesSelector } from '../../hooks/store';
 import { setDialogOpen } from '../../store/charactersDialog';
 import { FavoritesState, setSnackbar } from '../../store/favorites';
 
 // component for handle the snackbar message
-function SnackbarMessage({ action, entityName, entityType, favoritePath }: FavoritesState['favorites']['snackbar']) {
+function SnackbarMessage({ action, entityName, entityType, favoritePath }: FavoritesState['snackbar']) {
   const dispatch = useDispatch();
 
   if (action === 'add') {
@@ -38,9 +39,7 @@ function SnackbarMessage({ action, entityName, entityType, favoritePath }: Favor
 
 export default function FavoriteSnackbar() {
   const dispatch = useDispatch();
-  const snackbar = useSelector<FavoritesState, FavoritesState['favorites']['snackbar']>(
-    (state) => state.favorites.snackbar
-  );
+  const snackbar = useFavoritesSelector((state) => state.favorites.snackbar);
 
   const handleClose = (_event: React.SyntheticEvent | React.MouseEvent, reason?: string) => {
     if (reason === 'clickaway') {
