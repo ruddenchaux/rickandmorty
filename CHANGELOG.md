@@ -1,3 +1,15 @@
+## [0.6.2](https://github.com/ruddenchaux/rickandmorty/compare/0.6.1...0.6.2) (2021-04-20)
+
+
+### Bug Fixes
+
+* fix web app  title and name ([c79dde3](https://github.com/ruddenchaux/rickandmorty/commit/c79dde37066950e9257f7f12398d046bcab0b8e9))
+
+
+### Performance Improvements
+
+* **card:** render a card only when in viewport ([3939961](https://github.com/ruddenchaux/rickandmorty/commit/39399613d3739bbfdb93bcb9e07c223167ba0344))
+
 ## [0.6.1](https://github.com/ruddenchaux/rickandmorty/compare/0.6.0...0.6.1) (2021-04-18)
 
 
