@@ -1,6 +1,6 @@
 import { Hidden, makeStyles } from '@material-ui/core';
 import React, { useState } from 'react';
-import { Route, Switch, useLocation } from 'react-router-dom';
+import { Redirect, Route, Switch, useLocation } from 'react-router-dom';
 import Characters from '../../pages/Characters';
 import Episodes from '../../pages/Episodes';
 import Favorites from '../../pages/Favorites';
@@ -63,6 +63,7 @@ export default function Layout() {
           {routes.map((route) => (
             <Route key={route.path} path={route.path} exact={route.exact} component={route.component} />
           ))}
+          <Redirect from="*" to="/" />
         </Switch>
       </main>
       <Hidden mdUp>
