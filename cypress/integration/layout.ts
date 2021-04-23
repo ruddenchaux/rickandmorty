@@ -129,4 +129,12 @@ context('Layout', () => {
       });
     });
   });
+
+  it('Navigate to unknown pathname', () => {
+    cy.visit('/asd');
+    cy.get('main').should('not.be.empty');
+    cy.get('header').within(() => {
+      cy.contains('Characters');
+    });
+  });
 });
