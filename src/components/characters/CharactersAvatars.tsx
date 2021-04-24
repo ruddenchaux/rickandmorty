@@ -45,7 +45,7 @@ export default function CharactersAvatars({
   };
 
   if (xs) {
-    avatarsCount = 10;
+    avatarsCount = 9;
   }
 
   if (sm) {
@@ -53,7 +53,7 @@ export default function CharactersAvatars({
   }
 
   if (md) {
-    avatarsCount = 10;
+    avatarsCount = 8;
   }
 
   if (lg) {
