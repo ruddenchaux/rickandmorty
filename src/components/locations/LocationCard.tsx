@@ -10,9 +10,13 @@ import LocationCardType from './LocationCardType';
 // component style
 const useStyles = makeStyles((theme) => ({
   card: {
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up('lg')]: {
       display: 'flex',
       height: '234px'
+    },
+    [theme.breakpoints.down('md')]: {
+      display: 'flex',
+      height: '285.3px'
     },
     [theme.breakpoints.down('xs')]: {
       display: 'block',
