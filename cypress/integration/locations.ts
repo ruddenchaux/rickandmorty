@@ -62,10 +62,9 @@ context('Locations', () => {
     describe('LocationCard infinite loading', () => {
       for (let i = 0; i < 2; i++) {
         it(`Loading page ${i + 1}`, () => {
-          cy.clock();
           cy.scrollTo('bottom');
-          cy.tick(3000);
-          cy.get('[data-cy=location-card]').should('have.length', 20 * (i + 1));
+          cy.wait(2000);
+          cy.get('[data-cy=location-card]').should('have.length', 20 * (i + 2));
         });
       }
     });
