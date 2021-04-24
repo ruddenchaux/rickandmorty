@@ -1,3 +1,13 @@
+## [0.6.4](https://github.com/ruddenchaux/rickandmorty/compare/0.6.3...0.6.4) (2021-04-24)
+
+
+### Bug Fixes
+
+* **characters-avatars:** fixed height on cards with characters avatars ([e9b3ff8](https://github.com/ruddenchaux/rickandmorty/commit/e9b3ff84adc49d342ed8c0a3bd077cf7ac2a816c))
+* **infinite-loading:** fixed a infinite loading behavior on quickly srcoll ([6f22f8c](https://github.com/ruddenchaux/rickandmorty/commit/6f22f8cf8336270241fa198c19ee53162024e8cf)), closes [#14](https://github.com/ruddenchaux/rickandmorty/issues/14)
+* **layout:** fixed the unknown pathname navigation ([cc6d871](https://github.com/ruddenchaux/rickandmorty/commit/cc6d871fa112ec1993e6259bd3565ad523cd367b)), closes [#13](https://github.com/ruddenchaux/rickandmorty/issues/13)
+* **title:** fixed app title ([4d29e87](https://github.com/ruddenchaux/rickandmorty/commit/4d29e878cd84582a1c17d9895e9d4497ee0a71fb))
+
 ## [0.6.3](https://github.com/ruddenchaux/rickandmorty/compare/0.6.2...0.6.3) (2021-04-23)
 
 ## [0.6.2](https://github.com/ruddenchaux/rickandmorty/compare/0.6.1...0.6.2) (2021-04-20)
