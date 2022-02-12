@@ -55,7 +55,7 @@ export default function Layout() {
   return (
     <>
       <Header openMenu={setOpenMenu} />
-      <Hidden smDown>
+      <Hidden smDown lgUp>
         <Sidebar openMenu={openMenu} setOpenMenu={setOpenMenu} />
       </Hidden>
       <main className={classes.main}>
