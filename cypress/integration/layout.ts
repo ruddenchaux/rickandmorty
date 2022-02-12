@@ -38,6 +38,55 @@ context('Layout', () => {
     });
   });
 
+  describe('Header navigation', () => {
+    it('Not visible on mobile', () => {
+      cy.viewport('iphone-x');
+      cy.get('[data-cy=header-navigation]').should('not.exist');
+    });
+
+    it('Not visible on tablet', () => {
+      cy.viewport('ipad-2');
+      cy.get('[data-cy=header-navigation]').should('not.exist');
+    });
+
+    it('Visible on desktop', () => {
+      cy.viewport('macbook-16');
+      cy.get('[data-cy=header-navigation]').should('exist');
+    });
+
+    describe('Contains links', () => {
+      beforeEach(() => {
+        cy.viewport('macbook-16');
+      });
+
+      itemsMenu.forEach((item) => {
+        it(item.label, () => {
+          cy.get('[data-cy=header-navigation] [data-cy=header-navigation-item]').within(() => {
+            cy.contains(item.label);
+          });
+        });
+      });
+    });
+
+    describe('Navigate to routes', () => {
+      beforeEach(() => {
+        cy.viewport('macbook-16');
+      });
+
+      itemsMenu.forEach((item) => {
+        it(item.label, () => {
+          cy.get('[data-cy=header-navigation-item]').contains(item.label).click();
+
+          cy.get('[data-cy=header-navigation-item]').contains(item.label).parent().should('have.class', 'active');
+
+          cy.location().should((loc) => {
+            expect(loc.pathname).to.include(item.to);
+          });
+        });
+      });
+    });
+  });
+
   describe('Sidebar', () => {
     describe('Contains links', () => {
       before(() => {
