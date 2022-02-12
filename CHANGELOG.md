@@ -1,3 +1,10 @@
+## [0.6.5](https://github.com/ruddenchaux/rickandmorty/compare/0.6.4...0.6.5) (2022-02-12)
+
+
+### Bug Fixes
+
+* **header:** add a header navigation on desktop ([2fcd7fd](https://github.com/ruddenchaux/rickandmorty/commit/2fcd7fd04f5ddefeebfaf6b4d98076db84825321)), closes [#16](https://github.com/ruddenchaux/rickandmorty/issues/16)
+
 ## [0.6.4](https://github.com/ruddenchaux/rickandmorty/compare/0.6.3...0.6.4) (2021-04-24)
 
 
