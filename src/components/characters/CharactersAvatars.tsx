@@ -1,12 +1,13 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react/no-array-index-key */
 import { Grid, Link, makeStyles, Typography } from '@material-ui/core';
-import { Skeleton } from '@material-ui/lab';
+import { Alert, Skeleton } from '@material-ui/lab';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import useMediaQueries from '../../hooks/useMediaQueries';
 import { Character } from '../../models/Character';
 import { setDialogCharacters, setDialogOpen, setDialogTitle } from '../../store/charactersDialog';
+import Logo from '../Logo';
 import CharacterAvatar from './CharacterAvatar';
 
 // component style
@@ -64,6 +65,29 @@ export default function CharactersAvatars({
     avatarsCount = 4;
   }
 
+  const viewMore =
+    characters?.length > avatarsCount ? (
+      <>
+        &nbsp;
+        <Link
+          component="button"
+          variant="body2"
+          data-cy="characters-view-more"
+          onClick={() => {
+            openFullScreenDialog();
+          }}
+        >
+          View more
+        </Link>
+      </>
+    ) : null;
+
+  const noCharactersMessage = !characters?.length ? (
+    <Alert variant="outlined" icon={<Logo width={20} height={20} />} severity="info">
+      Here don&apos;t are characters
+    </Alert>
+  ) : null;
+
   return (
     <div className={classes.container}>
       {isLoading ? (
@@ -74,21 +98,7 @@ export default function CharactersAvatars({
             {label}
           </Typography>
 
-          {characters.length > avatarsCount ? (
-            <>
-              &nbsp;
-              <Link
-                component="button"
-                variant="body2"
-                data-cy="characters-view-more"
-                onClick={() => {
-                  openFullScreenDialog();
-                }}
-              >
-                View more
-              </Link>
-            </>
-          ) : null}
+          {viewMore}
         </>
       )}
 
@@ -102,6 +112,7 @@ export default function CharactersAvatars({
             )
           )}
         </Grid>
+        {!isLoading ? noCharactersMessage : null}
       </div>
     </div>
   );
