@@ -1,3 +1,10 @@
+## [0.6.7](https://github.com/ruddenchaux/rickandmorty/compare/0.6.6...0.6.7) (2022-02-13)
+
+
+### Bug Fixes
+
+* **alert:** add logo on all alert icon ([67d2b11](https://github.com/ruddenchaux/rickandmorty/commit/67d2b112119cc3c4f90b3f1b1b7308dab9124600))
+
 ## [0.6.6](https://github.com/ruddenchaux/rickandmorty/compare/0.6.5...0.6.6) (2022-02-13)
 
 
