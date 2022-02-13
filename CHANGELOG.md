@@ -1,3 +1,10 @@
+## [0.6.6](https://github.com/ruddenchaux/rickandmorty/compare/0.6.5...0.6.6) (2022-02-13)
+
+
+### Bug Fixes
+
+* **location-card:** add no characters info messages ([1b5542f](https://github.com/ruddenchaux/rickandmorty/commit/1b5542fee511907d8dd211e55d00219df8a86465)), closes [#19](https://github.com/ruddenchaux/rickandmorty/issues/19)
+
 ## [0.6.5](https://github.com/ruddenchaux/rickandmorty/compare/0.6.4...0.6.5) (2022-02-12)
 
 
