@@ -7,6 +7,7 @@ import useGridStyle from '../../hooks/useGridStyle';
 import { Character } from '../../models/Character';
 import { Episode } from '../../models/Episode';
 import { Location } from '../../models/Location';
+import Logo from '../Logo';
 
 declare type T = Character | Location | Episode;
 
@@ -28,7 +29,7 @@ export default function FavoritesGrid({
   if (!favoritesItems.length) {
     return (
       <Container className={gridClasses.cardGrid} maxWidth="md">
-        <Alert severity="info" variant="outlined">
+        <Alert severity="info" variant="outlined" icon={<Logo />}>
           <div>You haven&apos;t favorites {label}!</div>
           <div>
             Go to the{' '}

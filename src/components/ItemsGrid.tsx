@@ -5,6 +5,7 @@ import { UseQuery } from '@rtk-incubator/rtk-query/dist/ts/react-hooks/buildHook
 import React, { LegacyRef, useEffect, useState } from 'react';
 import useGridStyle from '../hooks/useGridStyle';
 import useIntersectionObserver from '../hooks/useIntersectionObserver';
+import Logo from './Logo';
 
 type UseGetAllQuery<T, K> = UseQuery<
   QueryDefinition<
@@ -99,7 +100,9 @@ export default function ItemsGrid<T, K>({
   if (error) {
     return (
       <Container className={classes.cardGrid} maxWidth="md">
-        <Alert severity="error">Ops.. Something went wrong! :-(</Alert>
+        <Alert severity="error" icon={<Logo width={20} height={20} />}>
+          Ops.. Something went wrong! :-(
+        </Alert>
       </Container>
     );
   }
@@ -107,7 +110,9 @@ export default function ItemsGrid<T, K>({
   if (!isFetching && !isLoading && !paginatedData?.length && !fetchedItems?.length) {
     return (
       <Container className={classes.cardGrid} maxWidth="md">
-        <Alert severity="info">There are no data!</Alert>
+        <Alert severity="info" icon={<Logo width={20} height={20} />}>
+          There are no data!
+        </Alert>
       </Container>
     );
   }

@@ -7,6 +7,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import { useFavoritesSelector } from '../../hooks/store';
 import { setDialogOpen } from '../../store/charactersDialog';
 import { FavoritesState, setSnackbar } from '../../store/favorites';
+import Logo from '../Logo';
 
 // component for handle the snackbar message
 function SnackbarMessage({ action, entityName, entityType, favoritePath }: FavoritesState['snackbar']) {
@@ -59,7 +60,7 @@ export default function FavoriteSnackbar() {
       onClose={handleClose}
       autoHideDuration={6000}
     >
-      <Alert severity="info" onClose={handleClose}>
+      <Alert severity="info" icon={<Logo width={20} height={20} />} onClose={handleClose}>
         <SnackbarMessage {...snackbar} />
       </Alert>
     </Snackbar>
