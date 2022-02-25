@@ -1,3 +1,10 @@
+# [0.7.0](https://github.com/ruddenchaux/rickandmorty/compare/0.6.7...0.7.0) (2022-02-25)
+
+
+### Features
+
+* **pwa:** add pwa support ([7c24805](https://github.com/ruddenchaux/rickandmorty/commit/7c248059d60195628dc751e2a2395cd8a0b675f9)), closes [#17](https://github.com/ruddenchaux/rickandmorty/issues/17)
+
 ## [0.6.7](https://github.com/ruddenchaux/rickandmorty/compare/0.6.6...0.6.7) (2022-02-13)
 
 
