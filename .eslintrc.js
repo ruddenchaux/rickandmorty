@@ -23,7 +23,7 @@ module.exports = {
     sourceType: 'module',
     project: './tsconfig.json'
   },
-  ignorePatterns: ['build/**', 'cypress/**'],
+  ignorePatterns: ['build/**', 'cypress/**', 'dist/**'],
   rules: {
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     'linebreak-style': 'off',
