@@ -1,5 +1,5 @@
 import { Container, Grid, GridSize } from '@material-ui/core';
-import { Alert } from '@material-ui/lab';
+import { Alert, Color } from '@material-ui/lab';
 import { QueryDefinition } from '@rtk-incubator/rtk-query/dist';
 import { UseQuery } from '@rtk-incubator/rtk-query/dist/ts/react-hooks/buildHooks';
 import React, { LegacyRef, useEffect, useState } from 'react';
@@ -97,24 +97,40 @@ export default function ItemsGrid<T, K>({
     }
   }, [fetchedItems]);
 
-  if (error) {
+  const alert = ({
+    severity,
+    message,
+    logoWidth = 20,
+    logoHeight = 20
+  }: {
+    severity: Color | undefined;
+    message: string;
+    logoWidth?: number;
+    logoHeight?: number;
+  }) => {
     return (
       <Container className={classes.cardGrid} maxWidth="md">
-        <Alert severity="error" icon={<Logo width={20} height={20} />}>
-          Ops.. Something went wrong! :-(
+        <Alert severity={severity} icon={<Logo width={logoWidth} height={logoHeight} />}>
+          {message}
         </Alert>
       </Container>
     );
+  };
+
+  if (error) {
+    return navigator.onLine
+      ? alert({ severity: 'error', message: 'Ops.. Something went wrong! :-(' })
+      : alert({
+          severity: 'warning',
+          message:
+            'The network is offline. If you want to use the application offline, you must do the first usage with the network online.',
+          logoWidth: 40,
+          logoHeight: 40
+        });
   }
 
   if (!isFetching && !isLoading && !paginatedData?.length && !fetchedItems?.length) {
-    return (
-      <Container className={classes.cardGrid} maxWidth="md">
-        <Alert severity="info" icon={<Logo width={20} height={20} />}>
-          There are no data!
-        </Alert>
-      </Container>
-    );
+    return alert({ severity: 'info', message: 'There are no data!' });
   }
 
   return (
